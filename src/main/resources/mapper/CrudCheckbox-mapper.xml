@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CrudCheckbox">
+	<update id="updateHitMulti">
+		UPDATE CRUD set hit = hit + 1 WHERE idx IN
+		<foreach item="idx" collection="list" open="(" separator="," close=")">
+			#{idx}
+		</foreach>
+	</update>
+
+	<update id="updateMulti" parameterType="com.i.manual.crud.basic.CrudBasicDTO">
+		UPDATE CRUD SET
+		      title    =  #{title}
+		    , name     =  #{name}
+		    , content  =  #{content}
+		WHERE IDX     IN  
+	    <foreach item="idx" collection="idxList" open="(" separator="," close=")">
+	        #{idx}
+	    </foreach>
+	</update>
+	
+	<delete id="deleteMulti">
+		DELETE FROM CRUD WHERE idx IN
+		<foreach item="idx" collection="list" open="(" separator="," close=")">
+			#{idx}
+		</foreach>
+	</delete>
+</mapper>

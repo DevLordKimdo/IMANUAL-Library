@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Submit InputCheck Form</title>
+</head>
+<link rel="stylesheet" href="/css/basic/styles.css">
+<body>
+	<h2>Radio Tag</h2>
+    <form name="frm">
+	<div>
+		<label><input type="radio" name="radio" onchange="changeRadio('1')" value="1">1번째 값</label>
+		<label><input type="radio" name="radio" onchange="changeRadio('2')" value="2">2번째 값</label>
+		<label><input type="radio" name="radio" onchange="changeRadio('3')" value="3">3번째 값</label>
+	</div>
+	<div id="radioResult"></div>
+	
+	<h2>Select Tag</h2>
+	<select name="select" onchange="changeSelect()">
+		<option value="1">1번째 셀렉트옵션
+		<option value="2">2번째 셀렉트옵션
+		<option value="3">3번째 셀렉트옵션
+	</select>
+	<div id="selectResult"></div>
+	
+	<h2>Checkbox Tag</h2>
+	<input type="checkbox" name="checkbox" onchange="changeCheckbox()">체크박스
+	<div id="checkboxResult"></div>
+	
+	<h2>InputText Tag</h2>
+	<input type="text" name="inputText" onblur="changeInputText()" value="">
+	<div id="inputTextResult"></div>
+	
+	</form>
+	<h2>Submit</h2>
+	<button onclick="Submit();">전송</button>
+	<button onclick="ResetAll();">초기화</button>
+	
+</body>
+<script type="text/javaScript">
+	// 초기 시작 상태값 감지 후 표시
+    if (!document.querySelector('input[name="radio"]:checked')) {
+        document.getElementById('radioResult').textContent = '선택이 되지 않음';
+    } else {
+		let checkedValue = document.querySelector('input[name="radio"]:checked').value;
+		document.getElementById('radioResult').textContent = `${checkedValue}번째 값 선택됨`;
+    }
+	
+    let selectedValue = document.querySelector('select[name="select"]').value;
+    if (selectedValue) {
+        document.getElementById('selectResult').textContent = `${selectedValue}번째 값 선택됨`;
+    } else {
+        document.getElementById('selectResult').textContent = '선택이 되지 않음';
+    }
+    
+    if (!document.querySelector('input[name="checkbox"]:checked')) {
+        document.getElementById('checkboxResult').textContent = '체크박스 체크되지 않음';
+    } else {
+		document.getElementById('checkboxResult').textContent = '체크박스 체크됨';
+    }
+
+    if (document.querySelector('input[name="inputText"]').value == "") {
+    	document.getElementById('inputTextResult').textContent = '값이 입력되어있지 않음';
+    } else {
+    	document.getElementById('inputTextResult').textContent = '값이 입력되어 있음';
+    }
+	
+	// input 태그 값이 변경될 때 바꿔주는 코드
+	function changeRadio(value) {
+		document.getElementById('radioResult').textContent = `${value}번째 값 선택됨`;
+	}
+	
+	function changeSelect() {
+	    let select = document.querySelector('select[name="select"]');
+	    document.getElementById('selectResult').textContent = `${select.value}번째 값 선택됨`;
+	}
+	
+	function changeCheckbox() {
+		if(document.querySelector('input[name="checkbox"]:checked')) {
+			document.getElementById('checkboxResult').textContent = `체크박스 체크됨`;
+		} else {
+			document.getElementById('checkboxResult').textContent = `체크박스 체크되지 않음`;
+		}
+	}
+	
+	function changeInputText() {
+	    if (document.querySelector('input[name="inputText"]').value == "") {
+	    	document.getElementById('inputTextResult').textContent = '값이 입력되어있지 않음';
+	    } else {
+	    	document.getElementById('inputTextResult').textContent = '값이 입력되어 있음';
+	    }
+	}
+	
+	
+	function Submit() {
+	    let Message = "";
+	    
+	    let selectedRadio = document.querySelector('input[name="radio"]:checked');
+		if(selectedRadio) {
+			Message = Message + `라디오태그 : ${selectedRadio.value}번째 선택됨\n`;
+		} else {
+			Message = Message + "라디오태그 : 선택안됨\n";
+		}
+		
+	    let selectedValue = document.querySelector('select[name="select"]').value;
+	    if (selectedValue) {
+	    	Message = Message + `셀렉트태그 : ${selectedValue}번째 선택됨\n`;
+	    } else {
+	    	Message = Message + "셀렉트태그 : 선택안됨\n";
+	    }
+	    
+	    if (!document.querySelector('input[name="checkbox"]:checked')) {
+	    	Message = Message + "체크박스 태그 : 체크되지 않음\n";
+	    } else {
+	    	Message = Message + "체크박스 태그 : 체크됨\n";
+	    }
+		
+	    if (document.querySelector('input[name="inputText"]').value == "") {
+	    	Message = Message + "인풋텍스트 태그 : 입력되어있지 않음\n";
+	    } else {
+	    	Message = Message + "인풋텍스트 태그 : 입력됨\n";
+	    }
+		
+		alert(Message);
+	}
+	
+	// 모든 입력,설정값 초기화
+	function ResetAll() {
+	    if(document.querySelector('input[name="radio"]:checked')) {  // 선택된 라디오 버튼이 있을 때만 실행
+	    	document.querySelector('input[name="radio"]:checked').checked = false;
+	    }
+		document.querySelector('select[name="select"]').selectedIndex = -1;
+		document.querySelector('input[name="checkbox"]').checked = false;
+		document.querySelector('input[name="inputText"]').value = "";
+	}
+</script>
+</html>

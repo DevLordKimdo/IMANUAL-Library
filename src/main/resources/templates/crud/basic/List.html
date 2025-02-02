@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Crud Basic List</title>
+</head>
+<link rel="stylesheet" href="/css/basic/styles.css">
+<body>
+	<table>
+	    <colgroup> 
+	    	<col style="width: 10%;"/>
+	        <col style="width: 40%;"/>
+	        <col style="width: 20%;"/>
+	        <col style="width: 20%;"/>
+	        <col style="width: 10%;"/>
+	    </colgroup>
+		<thead>
+		    <tr>
+		        <th>번호</th>
+		        <th>제목</th>
+		        <th>이름</th>
+		        <th>날짜</th>
+		        <th>조회</th>
+		    </tr>
+	    </thead>
+	    <tbody>
+		    <tr th:each="List: ${List}">
+		        <td th:text="${List.idx}"></td>
+		        <td><a th:text="${List.title}" th:href="@{|/Crud/Basic/Read/${List.idx}|}"></a></td>
+				<td th:text="${List.name}"></td>
+				<td th:text="${List.datetime}"></td>
+		        <td th:text="${List.hit}"></td>
+		    </tr>
+	    </tbody>
+	    <tfoot>
+			<tr>
+				<td><a href="/Crud/Basic/Create"><button>글작성</button></a></td>
+			</tr>
+	    </tfoot>
+	</table>
+	
+</body>
+</html>

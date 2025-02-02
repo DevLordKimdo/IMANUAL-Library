@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Crud ReturnIdx Read</title>
+</head>
+<link rel="stylesheet" href="/css/basic/styles.css">
+<body>
+	<div th:text="|번호 : ${Read.idx}|"></div>
+	<div th:text="|날짜 : ${Read.datetime}|"></div>
+	<div th:text="|조회 : ${Read.hit}|"></div>
+	<div th:text="|이름 : ${Read.name}|"></div>
+	<div th:text="|제목 : ${Read.title}|"></div>
+	<div th:text="|내용 : ${Read.content}|"></div>
+	<div><a href="/Crud/ReturnIdx/List"><button>목록</button></a></div>
+</body>
+</html>

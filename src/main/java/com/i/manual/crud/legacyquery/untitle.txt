@@ -1,0 +1,108 @@
+1. 레포지토리에서 INSERT 문 작성 시
+	try {
+	Connection conn = DataSourceUtils.getConnection(dataSource);
+	LocalDateTime now = LocalDateTime.now();
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	String formatedNow = now.format(formatter);
+	String sql = "INSERT INTO CRUD ( ";
+	sql = sql + " title";
+	sql = sql + " ,content";
+	sql = sql + " ,name";
+	sql = sql + " ,datetime";
+	sql = sql + " ,hit";
+	sql = sql + " ) VALUES ( ";
+	sql = sql + " '" + crudDTO.getTitle() + "'";
+	sql = sql + ",'" + crudDTO.getContent() + "'";
+	sql = sql + ",'" + crudDTO.getName() + "'";
+	sql = sql + ",'" + formatedNow + "'";
+	sql = sql + ",'0'";
+	sql = sql + ")";
+	PreparedStatement ps = conn.prepareStatement(sql);
+	ps.executeUpdate();
+	ps.close();
+	DataSourceUtils.releaseConnection(conn, dataSource);
+
+위 처럼 작성할 경우 SQL INJECTION 공격에 취약함. 실제로 구현 가능
+위 처럼 작성 후 글 작성 페이지에서
+','',null,null); DELETE FROM CRUD; --
+값을 넣고 전송 보내면 데이터가 모두 삭제됨
+
+
+2. SELECT 문 작성 시
+while (rs.next()) {} 와 if (rs.next()) {} 는 무조건 들어가야 함
+while (rs.next()) {} - 2개 이상의 다중 데이터를 불러올 때 사용
+if (rs.next()) - 단일 오직 1개의 데이터를 불러올때 사용. 만약 2개 이상의 데이터를 불러올 경우 그중에서 최상위 1개만 데이터를 넣는다.
+예문
+	if (rs.next()) {
+	    crudDTO = new CrudDTO();
+	    crudDTO.setIdx(rs.getString("idx"));
+	   	...
+	}
+
+
+3. private DataSource dataSource 를 사용 시 @Autowired 어노테이션을 쓰게 되어있는데 @Autowired 를 안쓸 경우
+아래와 같은 코드를 작성하게 됨
+@Repository
+public class CrudRepository {
+    private final DataSource dataSource;
+
+    public CrudRepository() {
+        // DataSource 생성 및 설정
+        BasicDataSource dataSource = new BasicDataSource();
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/mydb");
+        dataSource.setUsername("username");
+        dataSource.setPassword("password");
+
+        this.dataSource = dataSource;
+    }
+
+    public List<CrudDTO> getCrudList() {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            conn = dataSource.getConnection();
+            ps = conn.prepareStatement("SELECT * FROM mytable");
+            rs = ps.executeQuery();
+
+            List<CrudDTO> crudList = new ArrayList<>();
+            while (rs.next()) {
+                CrudDTO crudDTO = new CrudDTO();
+                crudDTO.setColumn1(rs.getString(1));
+                crudDTO.setColumn2(rs.getString(2));
+                crudList.add(crudDTO);
+            }
+
+            return crudList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // 리소스 정리
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return null;
+    }
+}

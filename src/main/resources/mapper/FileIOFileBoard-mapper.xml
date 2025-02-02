@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="FileIOFileBoard">
+	<select id="list" resultType="com.i.manual.fileio.fileboard.FileIOFileBoardDTO">
+		SELECT 
+			A.idx,
+			A.postidx,
+			A.name,
+			A.size,
+			A.seq,
+			FORMATDATETIME ( A.datetime, 'yyyy-MM-dd HH:mm:ss' ) AS datetime,
+			( SELECT COUNT(*) FROM FileBoard WHERE postidx = A.postidx ) AS postcount
+		FROM FileBoard AS A
+	</select>
+	
+	<select id="newPostIdx" resultType="String">
+		SELECT
+			CASE WHEN MAX(postidx) is null THEN 1 
+				 ELSE MAX(postidx) + 1
+			END AS NewPostIdx
+		FROM FileBoard
+	</select>
+	
+	<insert id="upload" parameterType="com.i.manual.fileio.fileboard.FileIOFileBoardDTO">
+		INSERT INTO FileBoard (
+			 postidx
+			,name
+			,size
+			,seq
+			,datetime
+		) VALUES (
+			 #{postidx}
+     		,#{name}
+     		,#{size}
+     		,#{seq}
+     		,CURRENT_TIMESTAMP()
+		) 
+	</insert>
+</mapper>

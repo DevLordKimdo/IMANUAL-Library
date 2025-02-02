@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Http ChangeMethod Index</title>
+</head>
+<link rel="stylesheet" href="/css/basic/styles.css">
+<body>
+	<div>
+		<h2>Request HTTP GET to POST</h2>
+		<button onclick="fn_GetToPost()">GETtoPOST</button>
+	</div>
+	<div>
+		<h2>Request HTTP POST to GET</h2>
+		<button onclick="fn_PostToGet()">POSTtoGET</button>
+		<form name="Form"></form>
+	</div>
+</body>
+<Script>
+	function fn_GetToPost() {
+		location.href = "/Http/ChangeMethod/GetToPost"
+	}
+	
+	function fn_PostToGet() {
+		document.Form.action = "/Http/ChangeMethod/PostToGet";
+		document.Form.method = "POST";
+		document.Form.submit();
+	}
+</Script>
+</html>

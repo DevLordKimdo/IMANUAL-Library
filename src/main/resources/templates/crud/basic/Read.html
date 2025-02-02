@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Crud Basic Read</title>
+</head>
+<link rel="stylesheet" href="/css/basic/styles.css">
+<body>
+	<form th:action="@{|/Crud/Basic/Update/${Read.idx}|}" method="post">
+		<div th:text="|번호 : ${Read.idx}|"></div>
+		<div th:text="|날짜 : ${Read.datetime}|"></div>
+		<div th:text="|조회 : ${Read.hit}|"></div>
+		<div>이름 : <input type="text" name="name" th:value="${Read.name}"/></div>
+		<div>제목 : <input type="text" name="title" th:value="${Read.title}"/></div>
+		<div>내용 : <textarea name="content" th:text="${Read.content}"></textarea></div>
+		<div><input type="submit" value="수정"></div>
+	</form>
+		<div><a href="/Crud/Basic/List"><button>목록</button></a></div>
+		<div><a th:href="@{|/Crud/Basic/Delete/${Read.idx}|}"><button>삭제</button></a></div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CrudSearch">
+	<select id="list" resultType="com.i.manual.crud.search.CrudSearchDTO">
+		SELECT 
+			idx,
+			title,
+			content,
+			name,
+			FORMATDATETIME(datetime, 'yyyy-MM-dd HH:mm:ss') AS datetime,
+			hit
+		FROM CRUD
+		WHERE 1 = 1
+		<if test="SearchKeyword != ''">
+			<choose>
+				<when test="SearchOption == 'title'">
+					AND title LIKE CONCAT('%', #{SearchKeyword}, '%')
+				</when>
+				<when test="SearchOption == 'content'">
+					AND content LIKE CONCAT('%', #{SearchKeyword}, '%')
+				</when>
+				<when test="SearchOption == 'name'">
+					AND name LIKE CONCAT('%', #{SearchKeyword}, '%')
+				</when>
+			</choose>
+		</if>
+		<if test="(SearchDateStart != null and SearchDateStart != '') and (SearchDateEnded != null and SearchDateEnded != '')">
+			AND datetime between #{SearchDateStart} AND #{SearchDateEnded}
+		</if>
+	</select>
+</mapper>
