@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Excel Inport Form</title>
+</head>
+<link rel="stylesheet" href="/css/basic/styles.css">
+<body>
+	<h2>엑셀 작성 양식(아래처럼 작성하고 업로드 할것)</h2>
+	<table border="1">
+		<colgroup> 
+	    	<col style="width: 20%;"/>
+	        <col style="width: 20%;"/>
+	        <col style="width: 20%;"/>
+	    </colgroup>
+		<thead>
+			<tr>
+				<th>Index</th>
+				<th>Name</th>
+				<th>Value</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>값1</td>
+				<td>값2</td>
+				<td>값3</td>
+			</tr>
+			<tr>
+				<td>값1</td>
+				<td>값2</td>
+				<td>값3</td>
+			</tr>
+			<tr>
+				<td>값1</td>
+				<td>값2</td>
+				<td>값3</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<h2>Excel Upload</h2>
+	<form action="/Excel/Inport/Upload" method="post" enctype="multipart/form-data">
+		<input type="file" name="ExcelUpload" accept=".xls, .xlsx"><br>
+		<input type="submit" value="엑셀업로드">
+	</form>
+	
+
+
+</body>
+</html>

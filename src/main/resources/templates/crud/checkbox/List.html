@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Crud Checkbox List</title>
+</head>
+<link rel="stylesheet" href="/css/basic/styles.css">
+<body>
+	<form name="listForm">
+		<table border="1">
+		    <colgroup> 
+		    	<col style="width: 5%;"/>
+		    	<col style="width: 10%;"/>
+		        <col style="width: 35%;"/>
+		        <col style="width: 20%;"/>
+		        <col style="width: 20%;"/>
+		        <col style="width: 10%;"/>
+		    </colgroup>
+			<thead>
+			    <tr>
+			    	<th><input type="checkbox" name="checkAll" onclick="fn_checkAll()"></th>
+			        <th>번호</th>
+			        <th>제목</th>
+			        <th>이름</th>
+			        <th>날짜</th>
+			        <th>조회</th>
+			    </tr>
+		    </thead>
+		    <tbody>
+			    <tr th:each="List: ${List}">
+			    	<td><input type="checkbox" name="checkIdx" th:value="${List.idx}"></td>
+			        <td th:text="${List.idx}"></td>
+			        <td th:text="${List.title}"></td>
+					<td th:text="${List.name}"></td>
+					<td th:text="${List.datetime}"></td>
+			        <td th:text="${List.hit}"></td>
+			    </tr>
+		    </tbody>
+		    <tfoot>
+				<tr>
+					<td colspan="6">
+						<button type="button" onclick="fn_checkCopy()">일괄 게시글 복제</button>
+						<button type="button" onclick="fn_checkUpdateHit()">일괄 조회수 올리기</button>
+						<button type="button" onclick="fn_checkUpdate()">일괄 수정</button>
+						<button type="button" onclick="fn_checkDelete()">일괄 삭제</button>
+					</td>
+				</tr>
+		    </tfoot>
+		</table>
+	</form>
+</body>
+<script>
+	function fn_checkAll() {
+		var chkAll = document.listForm.checkAll;
+		var chkIdx = document.listForm.checkIdx;
+		
+		if(chkAll.checked == true) {
+			for(i=0; i<chkIdx.length; i++) {
+				chkIdx[i].checked = true;
+			}
+		} else {
+			for(i=0; i<chkIdx.length; i++) {
+				chkIdx[i].checked = false;
+			}
+		}
+	}
+	
+	function fn_checkCopy() {
+       	document.listForm.action = "/Crud/Checkbox/CheckCopy";
+       	document.listForm.method = "POST";
+       	document.listForm.submit();
+	}
+	
+	function fn_checkUpdateHit() {
+       	document.listForm.action = "/Crud/Checkbox/CheckUpdateHit";
+       	document.listForm.method = "POST";
+       	document.listForm.submit();
+	}
+	
+	function fn_checkUpdate() {
+       	document.listForm.action = "/Crud/Checkbox/CheckUpdate";
+       	document.listForm.method = "POST";
+       	document.listForm.submit();
+	}
+	
+	function fn_checkDelete() {
+       	document.listForm.action = "/Crud/Checkbox/CheckDelete";
+       	document.listForm.method = "POST";
+       	document.listForm.submit();
+	}
+
+</script>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>XML Parser Form</title>
+</head>
+<link rel="stylesheet" href="/css/basic/styles.css">
+<body>
+	<h2>Sample .XML Content</h2>
+	<pre style="border: 1px solid black; padding:10px;">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;company&gt;
+    &lt;employee id="1001"&gt;
+        &lt;firstname&gt;Tony&lt;/firstname&gt;
+        &lt;lastname&gt;Black&lt;/lastname&gt;
+        &lt;salary&gt;100000&lt;/salary&gt;
+    &lt;/employee&gt;
+    &lt;employee id="2001"&gt;
+        &lt;firstname&gt;Amy&lt;/firstname&gt;
+        &lt;lastname&gt;Green&lt;/lastname&gt;
+        &lt;salary&gt;200000&lt;/salary&gt;
+    &lt;/employee&gt;
+&lt;/company&gt;</pre>
+	<!-- <>를 입력하면 태그로 인식함. &lt;은 '<' 로 표시되고 &gt;은 '>' 로 표시된다 -->
+	<h2>Input XML File</h2>
+	<form action="/XML/Parser/Upload" method="post" enctype="multipart/form-data">
+		<input type="file" name="Upload" accept=".xml"><br>
+		<input type="submit" value="XML 업로드">
+	</form>
+	
+	
+
+</body>
+</html>

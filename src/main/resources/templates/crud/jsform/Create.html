@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Crud JSForm Create</title>
+</head>
+<link rel="stylesheet" href="/css/basic/styles.css">
+<body>
+	<form name="form">
+		이름 : <input type="text" name="name"><br>
+		제목 : <input type="text" name="title"><br>
+		내용 : <textarea name="content"></textarea><br>
+		<button type="button" class="button" onclick="fn_createSubmit()">작성</button>
+	</form>
+</body>
+<script type="text/javaScript">
+	function fn_createSubmit() {
+       	document.form.action = "/Crud/JSForm/Create";
+       	document.form.method = "POST";
+       	document.form.submit();
+	}
+</script>
+</html>
