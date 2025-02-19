@@ -2,27 +2,27 @@ package com.i.manual.excel.inport;
 
 public class ExcelInportDTO {
 	
-	private String Index;
-	private String Name;
-	private String Value;
+	private String index;
+	private String name;
+	private String value;
 	
 	public String getIndex() {
-		return Index;
+		return index;
 	}
 	public void setIndex(String index) {
-		Index = index;
+		this.index = index;
 	}
 	public String getName() {
-		return Name;
+		return name;
 	}
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 	public String getValue() {
-		return Value;
+		return value;
 	}
 	public void setValue(String value) {
-		Value = value;
+		this.value = value;
 	}
-
+	
 }

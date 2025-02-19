@@ -4,35 +4,34 @@ import com.i.manual.crud.basic.CrudBasicDTO;
 
 public class CrudSearchDTO extends CrudBasicDTO {
 	
-	private String SearchOption;
-	private String SearchKeyword;
-	private String SearchDateStart;
-	private String SearchDateEnded;
+	private String searchOption;
+	private String searchKeyword;
+	private String searchDateStart;
+	private String searchDateEnded;
 	
 	public String getSearchOption() {
-		return SearchOption;
+		return searchOption;
 	}
 	public void setSearchOption(String searchOption) {
-		SearchOption = searchOption;
+		this.searchOption = searchOption;
 	}
 	public String getSearchKeyword() {
-		return SearchKeyword;
+		return searchKeyword;
 	}
 	public void setSearchKeyword(String searchKeyword) {
-		SearchKeyword = searchKeyword;
+		this.searchKeyword = searchKeyword;
 	}
 	public String getSearchDateStart() {
-		return SearchDateStart;
+		return searchDateStart;
 	}
 	public void setSearchDateStart(String searchDateStart) {
-		SearchDateStart = searchDateStart;
+		this.searchDateStart = searchDateStart;
 	}
 	public String getSearchDateEnded() {
-		return SearchDateEnded;
+		return searchDateEnded;
 	}
 	public void setSearchDateEnded(String searchDateEnded) {
-		SearchDateEnded = searchDateEnded;
+		this.searchDateEnded = searchDateEnded;
 	}
-
-
+		
 }
