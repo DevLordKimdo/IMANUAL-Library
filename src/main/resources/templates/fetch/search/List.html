@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Fetch Search List</title>
+</head>
+<link rel="stylesheet" href="/css/basic/styles.css">
+<script>
+	function submitJson() {
+		
+		let data = { searchOption    : document.getElementById('SearchOption').value,
+				     searchKeyword   : document.getElementById('SearchKeyword').value,
+				     searchDateStart : document.getElementById('SearchDateStart').value,
+				     searchDateEnded : document.getElementById('SearchDateEnded').value }
+		
+        fetch('/Fetch/Search/submitJson', {
+            method  : 'POST',
+            headers : { 'Content-Type' : 'application/json' },
+            body    : JSON.stringify(data)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            let html = ``;
+            let ResultList = document.getElementById('ResultList');
+            
+            data.forEach((list, idx) => {
+                html += `<tr>`;
+                html += `<td>${list.idx}</td>`;
+                html += `<td>${list.title}</td>`;
+                html += `<td>${list.name}</td>`;
+                html += `<td>${list.datetime}</td>`;
+                html += `<td>${list.hit}</td>`;
+                html += `</tr>`;
+            });
+            
+            ResultList.innerHTML = html;
+            
+        })
+        .catch(error => { console.error('요청 실패 : ', error); });
+	}
+	
+	function submitForm() {
+				
+		let SearchForm = document.getElementById('SearchForm');
+		let formData = new FormData(SearchForm);
+		let data = new URLSearchParams(formData).toString();
+		
+        fetch('/Fetch/Search/submitForm', {
+            method  : 'POST',
+            headers : { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body    : data
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            let html = ``;
+            let ResultList = document.getElementById('ResultList');
+            
+            data.forEach((list, idx) => {
+                html += `<tr>`;
+                html += `<td>${list.idx}</td>`;
+                html += `<td>${list.title}</td>`;
+                html += `<td>${list.name}</td>`;
+                html += `<td>${list.datetime}</td>`;
+                html += `<td>${list.hit}</td>`;
+                html += `</tr>`;
+            });
+            
+            ResultList.innerHTML = html;
+            
+        })
+        .catch(error => { console.error('요청 실패 : ', error); });
+	}
+
+</script>
+<body>
+	<div>
+		<h2>Search Form</h2>
+		<form name="SearchForm" id="SearchForm">
+			<select name="SearchOption" id="SearchOption" th:with="SearchOption=${Search.searchOption}">
+				<option value="title"   th:selected="${SearchOption == 'title'}"  >Title</option>
+				<option value="content" th:selected="${SearchOption == 'content'}">Content</option>
+				<option value="name"    th:selected="${SearchOption == 'name'}"   >Name</option>
+			</select>
+			<input type="text" name="SearchKeyword"   id="SearchKeyword" th:value="${Search.searchKeyword}">
+			<input type="date" name="SearchDateStart" id="SearchDateStart"> ~
+			<input type="date" name="SearchDateEnded" id="SearchDateEnded">
+		</form>
+		<input type="button" onClick="submitJson()" value="검색Json">
+		<input type="button" onClick="submitForm()" value="검색Form">
+	</div>
+	<div>
+		<table>
+		    <colgroup> 
+		    	<col style="width: 10%;"/>
+		        <col style="width: 40%;"/>
+		        <col style="width: 20%;"/>
+		        <col style="width: 20%;"/>
+		        <col style="width: 10%;"/>
+		    </colgroup>
+			<thead>
+			    <tr>
+			        <th>번호</th>
+			        <th>제목</th>
+			        <th>이름</th>
+			        <th>날짜</th>
+			        <th>조회</th>
+			    </tr>
+		    </thead>
+		    <tbody id="ResultList">
+			    <tr th:each="List: ${List}">
+			        <td th:text="${List.idx}"></td>
+			        <td th:text="${List.title}"></td>
+					<td th:text="${List.name}"></td>
+					<td th:text="${List.datetime}"></td>
+			        <td th:text="${List.hit}"></td>
+			    </tr>
+		    </tbody>
+		</table>
+	</div>
+	
+</body>
+</html>
