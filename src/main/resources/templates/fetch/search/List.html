@@ -8,10 +8,54 @@
 <script>
 	function submitJson() {
 		
-		let data = { searchOption    : document.getElementById('SearchOption').value,
-				     searchKeyword   : document.getElementById('SearchKeyword').value,
-				     searchDateStart : document.getElementById('SearchDateStart').value,
-				     searchDateEnded : document.getElementById('SearchDateEnded').value }
+		// 객체를 만들고 그 객체에 일일이 id 값을 집어넣기
+		let data = { searchOption    : document.getElementById('searchOption').value,
+				     searchKeyword   : document.getElementById('searchKeyword').value,
+				     searchDateStart : document.getElementById('searchDateStart').value,
+				     searchDateEnded : document.getElementById('searchDateEnded').value }
+		
+        fetch('/Fetch/Search/submitJson', {
+            method  : 'POST',
+            headers : { 'Content-Type' : 'application/json' },
+            body    : JSON.stringify(data)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            let html = ``;
+            let ResultList = document.getElementById('ResultList');
+            
+            data.forEach((list, idx) => {
+                html += `<tr>`;
+                html += `<td>${list.idx}</td>`;
+                html += `<td>${list.title}</td>`;
+                html += `<td>${list.name}</td>`;
+                html += `<td>${list.datetime}</td>`;
+                html += `<td>${list.hit}</td>`;
+                html += `</tr>`;
+            });
+            
+            ResultList.innerHTML = html;
+            
+        })
+        .catch(error => { console.error('요청 실패 : ', error); });
+	}
+	
+	function submitJson2() {
+		
+		// 위의 방법은 폼의 모든 입력 필드가 많아지면 그만큼 코드가 길어질 수 있다는 단점이 있음. 그걸 해결한 방법
+		// 폼 요소 가져오기
+		const searchForm = document.getElementById('searchForm');
+
+		// FormData를 생성
+		const formData = new FormData(searchForm);
+		
+		// 생성한 FormData를 객체로 변환해주기.
+		const data = Object.fromEntries(formData);
 		
         fetch('/Fetch/Search/submitJson', {
             method  : 'POST',
@@ -45,9 +89,15 @@
 	}
 	
 	function submitForm() {
-				
-		let SearchForm = document.getElementById('SearchForm');
-		let formData = new FormData(SearchForm);
+		
+		// 1단계 SearchForm 이라는 ID 값을 가진 Form 전체를 변수에 넣어줌.
+		let searchForm = document.getElementById('searchForm');
+		
+		// 2단계 FormData 형식으로 넣어주기
+		let formData = new FormData(searchForm);
+		
+		// 3단계 URLSearchParams 로 변환. 최종적으로는 문자열 형태(toString)로 변환
+		// application/x-www-form-urlencoded 형식에 맞게 인코딩하는 작업.
 		let data = new URLSearchParams(formData).toString();
 		
         fetch('/Fetch/Search/submitForm', {
@@ -80,23 +130,63 @@
         })
         .catch(error => { console.error('요청 실패 : ', error); });
 	}
+	
+	function submitForm2() {
+		// 위의 것보다 훨씬 쉽게 하는 방법.
+		
+		let searchForm = document.getElementById('searchForm');
+		
+        fetch('/Fetch/Search/submitForm', {
+            method  : 'POST',
+            // FormData를 직접 사용하거든 아예 Content-Type 헤더를 설정을 안하는 됨.
+            // fetch API가 자동으로 적절한 헤더 값을 부여해줌.
+            body    : new FormData(searchForm)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            let html = ``;
+            let ResultList = document.getElementById('ResultList');
+            
+            data.forEach((list, idx) => {
+                html += `<tr>`;
+                html += `<td>${list.idx}</td>`;
+                html += `<td>${list.title}</td>`;
+                html += `<td>${list.name}</td>`;
+                html += `<td>${list.datetime}</td>`;
+                html += `<td>${list.hit}</td>`;
+                html += `</tr>`;
+            });
+            
+            ResultList.innerHTML = html;
+            
+        })
+        .catch(error => { console.error('요청 실패 : ', error); });
+	}
+	
 
 </script>
 <body>
 	<div>
 		<h2>Search Form</h2>
-		<form name="SearchForm" id="SearchForm">
-			<select name="SearchOption" id="SearchOption" th:with="SearchOption=${Search.searchOption}">
-				<option value="title"   th:selected="${SearchOption == 'title'}"  >Title</option>
-				<option value="content" th:selected="${SearchOption == 'content'}">Content</option>
-				<option value="name"    th:selected="${SearchOption == 'name'}"   >Name</option>
+		<form name="searchForm" id="searchForm">
+			<select name="searchOption" id="searchOption" th:with="searchOption=${search.searchOption}">
+				<option value="title"   th:selected="${searchOption == 'title'}"  >Title</option>
+				<option value="content" th:selected="${searchOption == 'content'}">Content</option>
+				<option value="name"    th:selected="${searchOption == 'name'}"   >Name</option>
 			</select>
-			<input type="text" name="SearchKeyword"   id="SearchKeyword" th:value="${Search.searchKeyword}">
-			<input type="date" name="SearchDateStart" id="SearchDateStart"> ~
-			<input type="date" name="SearchDateEnded" id="SearchDateEnded">
+			<input type="text" name="searchKeyword"   id="searchKeyword" th:value="${search.searchKeyword}">
+			<input type="date" name="searchDateStart" id="searchDateStart"> ~
+			<input type="date" name="searchDateEnded" id="searchDateEnded">
 		</form>
 		<input type="button" onClick="submitJson()" value="검색Json">
+		<input type="button" onClick="submitJson2()" value="검색Json2">
 		<input type="button" onClick="submitForm()" value="검색Form">
+		<input type="button" onClick="submitForm2()" value="검색Form2">
 	</div>
 	<div>
 		<table>
@@ -117,12 +207,12 @@
 			    </tr>
 		    </thead>
 		    <tbody id="ResultList">
-			    <tr th:each="List: ${List}">
-			        <td th:text="${List.idx}"></td>
-			        <td th:text="${List.title}"></td>
-					<td th:text="${List.name}"></td>
-					<td th:text="${List.datetime}"></td>
-			        <td th:text="${List.hit}"></td>
+			    <tr th:each="list: ${list}">
+			        <td th:text="${list.idx}"></td>
+			        <td th:text="${list.title}"></td>
+					<td th:text="${list.name}"></td>
+					<td th:text="${list.datetime}"></td>
+			        <td th:text="${list.hit}"></td>
 			    </tr>
 		    </tbody>
 		</table>
