@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>http unfilter index</title>
+</head>
+<link rel="stylesheet" href="/css/basic/styles.css">
+<script>
+	function reqSend(metvalue) {
+		fetch("/http/unfilter/request", { method: metvalue })
+		.then(response => { console.log("요청 완료:", response.status); })
+		.catch(error => { console.error("요청 실패:", error); });
+	}
+</script>
+<body>
+	<div>
+		<h2>HTTP Method Request</h2>
+		<button onClick="reqSend('GET')"> GET 전송</button>
+		<button onClick="reqSend('POST')">POST 전송</button>
+		<button onClick="reqSend('PUT')"> PUT 전송</button>
+		<button onClick="reqSend('DELETE')"> DELETE 전송</button>
+		<button onClick="reqSend('CUSTOM')"> CUSTOM 전송</button>
+	</div>
+</body>
+</html>
