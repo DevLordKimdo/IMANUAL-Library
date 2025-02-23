@@ -14,23 +14,23 @@ public class PaginationBasicController {
     private final PaginationBasicService paginationBasicService;
     public PaginationBasicController(PaginationBasicService paginationBasicService) {this.paginationBasicService = paginationBasicService;}
         
-	@GetMapping("/Pagination/Basic/List/{currentPageIndex}")
-	public String List(@PathVariable("currentPageIndex") int currentPageIndex , Model model) {
+	@GetMapping("/pagination/basic/list/{currentPageIndex}")
+	public String list(@PathVariable("currentPageIndex") int currentPageIndex , Model model) {
 
-		int Count = paginationBasicService.count();
+		int count = paginationBasicService.count();
 		int postsPerPage = 10;
 		int pageStartIndex = (currentPageIndex - 1) * postsPerPage;
-		UtilPagination utilPagination = new UtilPagination(currentPageIndex, postsPerPage, Count);
+		UtilPagination utilPagination = new UtilPagination(currentPageIndex, postsPerPage, count);
 		model.addAttribute("page", utilPagination);
 		
 		PaginationBasicDTO paginationBasicDTO = new PaginationBasicDTO();
 		paginationBasicDTO.setPostsPerPage(postsPerPage);
 		paginationBasicDTO.setPageStart(pageStartIndex);
 		
-		List<PaginationBasicDTO> List = paginationBasicService.list(paginationBasicDTO);
-    	model.addAttribute("List", List);
+		List<PaginationBasicDTO> list = paginationBasicService.list(paginationBasicDTO);
+    	model.addAttribute("list", list);
 		
-		return "pagination/basic/List";
+		return "pagination/basic/list";
 	}
 
 }

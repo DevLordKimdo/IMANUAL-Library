@@ -11,13 +11,13 @@ import jakarta.servlet.http.HttpServletRequest;
 @Controller
 public class FetchCalculatorController {
 	
-	@GetMapping("/Fetch/Calculator/Form")
-	public String Form() {
+	@GetMapping("/fetch/calculator/form")
+	public String form() {
 		
-		return "fetch/calculator/Form";
+		return "fetch/calculator/form";
 	}
 	
-	@PostMapping("/Fetch/Calculator/Result")
+	@PostMapping("/fetch/calculator/result")
 	@ResponseBody
 	public int Result(@RequestParam("numA") int numA,
 			          @RequestParam("numB") int numB, HttpServletRequest request) {

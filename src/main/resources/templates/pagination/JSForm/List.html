@@ -20,10 +20,10 @@
 		    </tr>
 	    </thead>
 	    <tbody>
-		    <tr th:each="List: ${List}">
-		        <td th:text="${List.idx}"></td>
-		        <td th:text="${List.title}"></td>
-				<td th:text="${List.datetime}"></td>
+		    <tr th:each="list: ${list}">
+		        <td th:text="${list.idx}"></td>
+		        <td th:text="${list.title}"></td>
+				<td th:text="${list.datetime}"></td>
 		    </tr>
 	    </tbody>
 	    <tfoot>
@@ -55,15 +55,15 @@
 			</tr>
 	    </tfoot>
 	</table>
-	<form name="Form">
+	<form name="form">
 		<input type="hidden" name="currentPage">
 	</form>
 </body>
 <Script>
 	function fn_changePage(currentPage) {
-		document.Form.action = "/Pagination/JSForm/List/" + currentPage;
-		document.Form.method = "Post";
-		document.Form.submit();
+		document.form.action = "/pagination/js-form/list/" + currentPage;
+		document.form.method = "POST";
+		document.form.submit();
 	}
 </Script>
 </html>

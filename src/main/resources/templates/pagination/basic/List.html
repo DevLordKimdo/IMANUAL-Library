@@ -20,10 +20,10 @@
 		    </tr>
 	    </thead>
 	    <tbody>
-		    <tr th:each="List: ${List}">
-		        <td th:text="${List.idx}"></td>
-		        <td th:text="${List.title}"></td>
-				<td th:text="${List.datetime}"></td>
+		    <tr th:each="list: ${list}">
+		        <td th:text="${list.idx}"></td>
+		        <td th:text="${list.title}"></td>
+				<td th:text="${list.datetime}"></td>
 		    </tr>
 	    </tbody>
 	    <tfoot>
@@ -33,14 +33,14 @@
 					<div>
 						<!-- 이전 페이지 묶음으로 가기 버튼 -->
 						<span th:if="${page.isHasPrevPage()}">
-							<a th:href="@{|/Pagination/Basic/List/${page.startPageIndex - 1}|}">PREV</a>
+							<a th:href="@{|/pagination/basic/list/${page.startPageIndex - 1}|}">PREV</a>
 						</span>
 						
 						<!-- 페이징 목록 출력 -->
 						<span th:each="pageNum : ${#numbers.sequence(page.startPageIndex, page.endPageIndex)}">
 							<!-- 출력된 페이지와 현재 보고있는 페이지 번호가 같지 않을 경우 하이퍼링크를 적용해 출력 -->
 							<span th:if="${pageNum != page.currentPageIndex}">
-								<a th:href="@{|/Pagination/Basic/List/${pageNum}|}" th:text="${pageNum}"></a>
+								<a th:href="@{|/pagination/basic/list/${pageNum}|}" th:text="${pageNum}"></a>
 							</span>
 							<!-- 출력된 페이지와 현재 보고있는 페이지 번호가 같을 경우 번호만 출력 -->
 							<span th:unless="${pageNum != page.currentPageIndex}" th:text="${pageNum}"></span>
@@ -48,7 +48,7 @@
 						
 						<!-- 다음 페이지 묶음으로 가기 버튼 -->
 						<span th:if="${page.isHasNextPage()}">
-							<a th:href="@{|/Pagination/Basic/List/${page.endPageIndex + 1}|}">NEXT</a>
+							<a th:href="@{|/pagination/basic/list/${page.endPageIndex + 1}|}">NEXT</a>
 						</span>
 					</div>
 				</td>

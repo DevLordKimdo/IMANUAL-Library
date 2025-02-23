@@ -14,18 +14,18 @@ public class ExcelInportController {
 	private final ExcelInportService excelInportService;
 	public ExcelInportController(ExcelInportService excelInportService) {this.excelInportService = excelInportService;}
 	
-	@GetMapping("/Excel/Inport/Form")
-	public String Form() {
+	@GetMapping("/excel/inport/form")
+	public String form() {
 		
-		return "excel/inport/Form";
+		return "excel/inport/form";
 	}
 	
-	@PostMapping("/Excel/Inport/Upload")
-	public String Upload(@RequestParam("ExcelUpload") MultipartFile file) throws IOException {
+	@PostMapping("/excel/inport/upload")
+	public String upload(@RequestParam("excelUpload") MultipartFile file) throws IOException {
 		
-		excelInportService.Upload(file);
+		excelInportService.upload(file);
 		
-		return "redirect:/Excel/Inport/Form";
+		return "redirect:/excel/inport/form";
 	}
 
 }

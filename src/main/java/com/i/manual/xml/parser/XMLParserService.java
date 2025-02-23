@@ -15,7 +15,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 @Service
 public class XMLParserService {
 	
-	public void Upload(MultipartFile file) {
+	public void upload(MultipartFile file) {
 		try {
             InputStream inputStream = file.getInputStream();
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

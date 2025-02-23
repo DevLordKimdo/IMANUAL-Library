@@ -8,23 +8,23 @@
 <body>
 	<div>
 		<h2>Request HTTP GET to POST</h2>
-		<button onclick="fn_GetToPost()">GETtoPOST</button>
+		<button onclick="fn_getToPost()">GETtoPOST</button>
 	</div>
 	<div>
 		<h2>Request HTTP POST to GET</h2>
-		<button onclick="fn_PostToGet()">POSTtoGET</button>
-		<form name="Form"></form>
+		<button onclick="fn_postToGet()">POSTtoGET</button>
+		<form name="form"></form>
 	</div>
 </body>
 <Script>
-	function fn_GetToPost() {
-		location.href = "/Http/ChangeMethod/GetToPost"
+	function fn_getToPost() {
+		location.href = "/http/change-method/get-to-post"
 	}
 	
-	function fn_PostToGet() {
-		document.Form.action = "/Http/ChangeMethod/PostToGet";
-		document.Form.method = "POST";
-		document.Form.submit();
+	function fn_postToGet() {
+		document.form.action = "/http/change-method/post-to-get";
+		document.form.method = "POST";
+		document.form.submit();
 	}
 </Script>
 </html>

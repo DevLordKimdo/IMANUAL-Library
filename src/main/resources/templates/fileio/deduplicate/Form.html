@@ -7,26 +7,26 @@
 <link rel="stylesheet" href="/css/basic/styles.css">
 <body>
 	<h2>옵션 없음(중복 발생시 덮어 씌우기)</h2>
-	<form action="/FileIO/Deduplicate/UploadNoOption" method="post" enctype="multipart/form-data">
-		<input type="file" name="MultiUpload" multiple><br>
+	<form action="/file-io/deduplicate/upload-no-option" method="post" enctype="multipart/form-data">
+		<input type="file" name="multiUpload" multiple><br>
 		<input type="submit" value="다중파일 업로드">
 	</form>
 	
-	<h2>파일명 뒤에 번호(1) 붙임</h2>
-	<form action="/FileIO/Deduplicate/UploadAddNumber" method="post" enctype="multipart/form-data">
-		<input type="file" name="MultiUpload" multiple><br>
+	<h2>중복 발생 시 파일명 뒤에 번호(1) 붙임</h2>
+	<form action="/file-io/deduplicate/upload-add-number" method="post" enctype="multipart/form-data">
+		<input type="file" name="multiUpload" multiple><br>
 		<input type="submit" value="다중파일 업로드">
 	</form>
 	
 	<h2>파일명 앞에 시스템 시간 붙이기</h2>
-	<form action="/FileIO/Deduplicate/UploadAddSysTime" method="post" enctype="multipart/form-data">
-		<input type="file" name="MultiUpload" multiple><br>
+	<form action="/file-io/deduplicate/upload-add-sys-time" method="post" enctype="multipart/form-data">
+		<input type="file" name="multiUpload" multiple><br>
 		<input type="submit" value="다중파일 업로드">
 	</form>
 	
 	<h2>파일 명 전체를 난수화</h2>
-	<form action="/FileIO/Deduplicate/UploadCrypto" method="post" enctype="multipart/form-data">
-		<input type="file" name="MultiUpload" multiple><br>
+	<form action="/file-io/deduplicate/upload-crypto" method="post" enctype="multipart/form-data">
+		<input type="file" name="multiUpload" multiple><br>
 		<input type="submit" value="다중파일 업로드">
 	</form>
 </body>

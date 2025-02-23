@@ -15,27 +15,27 @@ public class FileIOFileBoardService {
 
 	public List<FileIOFileBoardDTO> list(){
 		
-		List<FileIOFileBoardDTO> List = fileIOFileBoardRepository.list();
+		List<FileIOFileBoardDTO> list = fileIOFileBoardRepository.list();
 
-		if (!List.isEmpty()) {
-		    String prevPostidx = List.get(0).getPostidx();
+		if (!list.isEmpty()) {
+		    String prevPostidx = list.get(0).getPostIdx();
 
-		    for (int i = 1; i < List.size(); i++) {
-		    	FileIOFileBoardDTO currentDTO = List.get(i);
-		        String currentPostidx = currentDTO.getPostidx();
+		    for (int i = 1; i < list.size(); i++) {
+		    	FileIOFileBoardDTO currentDTO = list.get(i);
+		        String currentPostidx = currentDTO.getPostIdx();
 
 		        if (currentPostidx != null && currentPostidx.equals(prevPostidx)) {
-		            currentDTO.setPostidx(null);
+		            currentDTO.setPostIdx(null);
 		        } else {
 		            prevPostidx = currentPostidx;
 		        }
 		    }
 		}
 		
-		return List;
+		return list;
 	}
 	
-	public void upload(List<MultipartFile> files, String Directory) throws IOException {
+	public void upload(List<MultipartFile> files, String directory) throws IOException {
 		
 		// 첨부파일 리스트 정보 DB에 INSERT
 		// 새로운 PostIdx 값 생성
@@ -44,7 +44,7 @@ public class FileIOFileBoardService {
 		for (int i = 0; i < files.size(); i++) {
 			MultipartFile file = files.get(i);
 	    	FileIOFileBoardDTO boardFileRoomDTO = new FileIOFileBoardDTO();
-	    	boardFileRoomDTO.setPostidx(newPostIdx);
+	    	boardFileRoomDTO.setPostIdx(newPostIdx);
 	    	boardFileRoomDTO.setName(file.getOriginalFilename());
 	    	boardFileRoomDTO.setSeq(Integer.toString(i+1));
 	    	boardFileRoomDTO.setSize(Long.toString(file.getSize()));
@@ -53,7 +53,7 @@ public class FileIOFileBoardService {
 	    }
 	    
 		// 첨부파일 물리 드라이브에 업로드
-        Path uploadPath = Paths.get(Directory);
+        Path uploadPath = Paths.get(directory);
         
         if (!Files.exists(uploadPath)) {
         	Files.createDirectories(uploadPath);

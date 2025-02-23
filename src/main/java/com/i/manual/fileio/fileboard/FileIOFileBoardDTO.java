@@ -3,13 +3,13 @@ package com.i.manual.fileio.fileboard;
 public class FileIOFileBoardDTO {
 	
 	private String idx;
-	private String postidx;
+	private String postIdx;
 	private String name;
-	private String namecrypto;
+	private String nameCrypto;
 	private String size;
 	private String seq;
 	private String datetime;
-	private String postcount;
+	private String postCount;
 	
 	public String getIdx() {
 		return idx;
@@ -17,11 +17,11 @@ public class FileIOFileBoardDTO {
 	public void setIdx(String idx) {
 		this.idx = idx;
 	}
-	public String getPostidx() {
-		return postidx;
+	public String getPostIdx() {
+		return postIdx;
 	}
-	public void setPostidx(String postidx) {
-		this.postidx = postidx;
+	public void setPostIdx(String postIdx) {
+		this.postIdx = postIdx;
 	}
 	public String getName() {
 		return name;
@@ -29,11 +29,11 @@ public class FileIOFileBoardDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getNamecrypto() {
-		return namecrypto;
+	public String getNameCrypto() {
+		return nameCrypto;
 	}
-	public void setNamecrypto(String namecrypto) {
-		this.namecrypto = namecrypto;
+	public void setNameCrypto(String nameCrypto) {
+		this.nameCrypto = nameCrypto;
 	}
 	public String getSize() {
 		return size;
@@ -53,11 +53,13 @@ public class FileIOFileBoardDTO {
 	public void setDatetime(String datetime) {
 		this.datetime = datetime;
 	}
-	public String getPostcount() {
-		return postcount;
+	public String getPostCount() {
+		return postCount;
 	}
-	public void setPostcount(String postcount) {
-		this.postcount = postcount;
+	public void setPostCount(String postCount) {
+		this.postCount = postCount;
 	}
+	
+
 
 }

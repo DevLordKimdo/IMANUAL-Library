@@ -13,24 +13,24 @@ public class CrudSearchController {
     private final CrudSearchService crudSearchService;
     public CrudSearchController(CrudSearchService crudSearchService) {this.crudSearchService = crudSearchService;}
         
-	@GetMapping("/Crud/Search/List")
-	public String List(Model model, CrudSearchDTO crudSearchDTO) {
+	@GetMapping("/crud/search/list")
+	public String list(Model model, CrudSearchDTO crudSearchDTO) {
 		
-		List<CrudSearchDTO> List = crudSearchService.list(crudSearchDTO);
-		model.addAttribute("Search", crudSearchDTO);
-    	model.addAttribute("List", List);
+		List<CrudSearchDTO> list = crudSearchService.list(crudSearchDTO);
+		model.addAttribute("search", crudSearchDTO);
+    	model.addAttribute("list", list);
 								
-		return "crud/search/List";
+		return "crud/search/list";
 	}
 	
-	@PostMapping("/Crud/Search/List")
-	public String Result(Model model, CrudSearchDTO crudSearchDTO) {
+	@PostMapping("/crud/search/list")
+	public String result(Model model, CrudSearchDTO crudSearchDTO) {
 		
-		List<CrudSearchDTO> List = crudSearchService.list(crudSearchDTO);
-		model.addAttribute("Search", crudSearchDTO);
-    	model.addAttribute("List", List);
+		List<CrudSearchDTO> list = crudSearchService.list(crudSearchDTO);
+		model.addAttribute("search", crudSearchDTO);
+    	model.addAttribute("list", list);
 
-		return "crud/search/List";
+		return "crud/search/list";
 	}
 
 

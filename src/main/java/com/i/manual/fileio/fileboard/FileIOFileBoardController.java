@@ -15,34 +15,34 @@ public class FileIOFileBoardController {
     private final FileIOFileBoardService fileIOFileBoardService;
     public FileIOFileBoardController(FileIOFileBoardService fileIOFileBoardService) {this.fileIOFileBoardService = fileIOFileBoardService;}
     
-	@GetMapping("/FileIO/FileBoard/List")
-	public String List(Model model) {
-		List<FileIOFileBoardDTO> List = fileIOFileBoardService.list();
+	@GetMapping("/file-io/file-board/list")
+	public String list(Model model) {
+		List<FileIOFileBoardDTO> list = fileIOFileBoardService.list();
 		
-    	model.addAttribute("List", List);
+    	model.addAttribute("list", list);
 		
-		return "fileio/fileboard/List";
+		return "fileio/fileboard/list";
 	}
 	
-	@GetMapping("/FileIO/FileBoard/Upload")
-	public String Upload() {
+	@GetMapping("/file-io/file-board/upload")
+	public String upload() {
 		
-		return "fileio/fileboard/Upload";
+		return "fileio/fileboard/upload";
 	}
 	
-	@PostMapping("/FileIO/FileBoard/Upload")
-	public String Upload(@RequestParam("Upload") List<MultipartFile> files) {
+	@PostMapping("/file-io/file-board/upload")
+	public String upload(@RequestParam("upload") List<MultipartFile> files) {
 		
         // 파일 저장 경로 지정
-		String Directory = "C:/upload/";
+		String directory = "C:/upload/";
 		
 		try {
-			fileIOFileBoardService.upload(files, Directory);
+			fileIOFileBoardService.upload(files, directory);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-		return "redirect:/FileIO/FileBoard/List";
+		return "redirect:/file-io/file-board/list";
 	}
 
 }

@@ -21,7 +21,7 @@ public class ExcelExportService {
     private final CrudBasicRepository crudBasicRepository;
     public ExcelExportService(CrudBasicRepository crudBasicRepository) {this.crudBasicRepository = crudBasicRepository;}
 	
-    public byte[] DownExcel() throws IOException {
+    public byte[] downExcel() throws IOException {
         List<CrudBasicDTO> list = crudBasicRepository.list(); //DB로 데이터 가져오기
 
         Workbook workbook = new XSSFWorkbook();
@@ -59,7 +59,7 @@ public class ExcelExportService {
     // 향상된 버전. 따로 모듈화한 코드를 이용함.
     // 모듈화한 코드는 위의 하드코딩식과는 달리 어떤 DB 자료를 가져와도 출력되게끔 구조를 설계.
     // DTO에 선언된 변수값들을 자동으로 넣어줌.
-    public byte[] DownExcelEnhance() throws IOException {
+    public byte[] downExcelEnhance() throws IOException {
         List<CrudBasicDTO> list = crudBasicRepository.list();
         
         UtilExportExcel utilExportExcel = new UtilExportExcel();

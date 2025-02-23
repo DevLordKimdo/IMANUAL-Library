@@ -19,10 +19,10 @@
 }
 </style>
 <body>
-	<button onclick="fn_OpenModal()">팝업 띄우기(모달)</button><br>
-	<div id="Modal">
+	<button onclick="fn_openModal()">팝업 띄우기(모달)</button><br>
+	<div id="modal">
 		<h2>여기가 모달창</h2>
-		<button onclick="fn_CloseModal()">닫기</button>
+		<button onclick="fn_closeModal()">닫기</button>
 	</div>
 	<div>본문의 의미 없는 내용</div>
 	<div>본문의 의미 없는 내용</div>
@@ -30,14 +30,14 @@
 	<div>본문의 의미 없는 내용</div>
 </body>
 <Script>
-	let Modal = document.getElementById("Modal");
+	let modal = document.getElementById("modal");
 	
-	function fn_OpenModal(){
-		Modal.style.display = "block";
+	function fn_openModal(){
+		modal.style.display = "block";
 	}
 	
-	function fn_CloseModal() {
-	    Modal.style.display = "none";
+	function fn_closeModal() {
+	    modal.style.display = "none";
 	}
 </Script>
 </html>

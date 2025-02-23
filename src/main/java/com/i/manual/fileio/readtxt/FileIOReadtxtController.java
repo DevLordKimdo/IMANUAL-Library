@@ -11,14 +11,14 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 public class FileIOReadtxtController {
 	
-	@GetMapping("/FileIO/Readtxt/Form")
-	public String Form() {
+	@GetMapping("/file-io/read-txt/form")
+	public String form() {
 	
-		return "fileio/readtxt/Form";
+		return "fileio/readtxt/form";
 	}
 	
-	@PostMapping("/FileIO/Basic/txtUpload")
-	public String SingleUpload(@RequestParam("txtUpload") MultipartFile file) {
+	@PostMapping("/file-io/basic/txt-upload")
+	public String singleUpload(@RequestParam("txtUpload") MultipartFile file) {
 		
 		try {
 			byte[] fileBytes = file.getBytes();
@@ -28,6 +28,6 @@ public class FileIOReadtxtController {
             e.printStackTrace();
         }
 
-		return "redirect:/FileIO/Readtxt/Form";
+		return "redirect:/file-io/read-txt/form";
 	}
 }

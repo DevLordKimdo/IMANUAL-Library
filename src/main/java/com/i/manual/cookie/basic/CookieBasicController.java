@@ -12,26 +12,26 @@ public class CookieBasicController {
     private final CookieBasicService cookieBasicService;
     public CookieBasicController(CookieBasicService cookieBasicService) {this.cookieBasicService = cookieBasicService;}
 	
-	@GetMapping("/Cookie/Basic/Index")
-	public String Index() {
+	@GetMapping("/cookie/basic/index")
+	public String index() {
 
-		return "cookie/basic/Index";
+		return "cookie/basic/index";
 	}
 	
-	@GetMapping("/Cookie/Basic/RequestBackend")
-	public String RequestBackend(HttpServletRequest request, HttpServletResponse response) {
+	@GetMapping("/cookie/basic/request-backend")
+	public String requestBackend(HttpServletRequest request, HttpServletResponse response) {
 		
-		cookieBasicService.RequestBackend(request, response);
+		cookieBasicService.requestBackend(request, response);
 		
-		return "redirect:/Cookie/Basic/Index";
+		return "redirect:/cookie/basic/index";
 	}
 	
-	@GetMapping("/Cookie/Basic/CheckCookie")
-	public String CheckCookie(HttpServletRequest request) {
+	@GetMapping("/cookie/basic/check-cookie")
+	public String checkCookie(HttpServletRequest request) {
 		
-		cookieBasicService.CheckCookie(request);
+		cookieBasicService.checkCookie(request);
 				
-		return "redirect:/Cookie/Basic/Index";
+		return "redirect:/cookie/basic/index";
 	}
 
 }

@@ -20,9 +20,9 @@ import jakarta.servlet.http.HttpServletResponse;
 @Service
 public class FileIOBasicService {
 	
-	public void SampleDownload(HttpServletResponse response, String SampleFile) throws IOException {
+	public void sampleDownload(HttpServletResponse response, String sampleFile) throws IOException {
 		
-        Path path = Paths.get(SampleFile);
+        Path path = Paths.get(sampleFile);
         Resource resource = new FileSystemResource(path.toFile());
 
         String contentType = "application/octet-stream";
@@ -38,7 +38,7 @@ public class FileIOBasicService {
 		
 	}
 	
-	public void SingleUpload(MultipartFile file, String Directory) throws IOException {
+	public void singleUpload(MultipartFile file, String directory) throws IOException {
 		
 		if (!file.isEmpty()) {
 
@@ -46,7 +46,7 @@ public class FileIOBasicService {
             String fileName = file.getOriginalFilename();
             
             // 파일 저장 경로 생성
-            Path uploadPath = Paths.get(Directory);
+            Path uploadPath = Paths.get(directory);
             
             // 디렉토리가 존재하지 않으면 생성
             if (!Files.exists(uploadPath)) {
@@ -59,12 +59,12 @@ public class FileIOBasicService {
 	    }
 	}
 	
-	public void MultiUpload(List<MultipartFile> files, String Directory) throws IOException {
+	public void multiUpload(List<MultipartFile> files, String directory) throws IOException {
 		
 		if (!files.isEmpty()) {
 	            
             // 파일 저장 경로 생성
-            Path uploadPath = Paths.get(Directory);
+            Path uploadPath = Paths.get(directory);
             
             // 디렉토리가 존재하지 않으면 생성
             if (!Files.exists(uploadPath)) {
@@ -81,29 +81,29 @@ public class FileIOBasicService {
 		
 	}
 	
-	public void DeleteTarget(String Directory, String DeleteTarget) {
+	public void deleteTarget(String directory, String deleteTarget) {
 		
-        Path DirectoryPath = Paths.get(Directory);
-        Path filePath = DirectoryPath.resolve(DeleteTarget);
+        Path directoryPath = Paths.get(directory);
+        Path filePath = directoryPath.resolve(deleteTarget);
         File file = filePath.toFile();
 
         if (file.exists() && file.isFile()) {
             if (file.delete()) {
-                System.out.println(DeleteTarget + " 파일이 삭제되었습니다.");
+                System.out.println(deleteTarget + " 파일이 삭제되었습니다.");
             } else {
-                System.out.println(DeleteTarget + " 파일 삭제에 실패했습니다.");
+                System.out.println(deleteTarget + " 파일 삭제에 실패했습니다.");
             }
         } else {
-            System.out.println(DeleteTarget + " 파일이 존재하지 않습니다.");
+            System.out.println(deleteTarget + " 파일이 존재하지 않습니다.");
         }
 	}
 	
-	public void DeleteAll(String Directory) throws IOException {
+	public void deleteAll(String directory) throws IOException {
 		
-        Path DirectoryPath = Paths.get(Directory);
+        Path directoryPath = Paths.get(directory);
 
         // uploadPath 디렉토리에 있는 모든 파일 삭제
-        Files.list(DirectoryPath).filter(Files::isRegularFile).map(Path::toFile).forEach(File::delete);
+        Files.list(directoryPath).filter(Files::isRegularFile).map(Path::toFile).forEach(File::delete);
 
 	}
 }

@@ -30,7 +30,7 @@
 			,seq
 			,datetime
 		) VALUES (
-			 #{postidx}
+			 #{postIdx}
      		,#{name}
      		,#{size}
      		,#{seq}

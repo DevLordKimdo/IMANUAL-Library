@@ -15,15 +15,15 @@ public class ExcelExportController {
 	private final ExcelExportService excelExportService;
 	public ExcelExportController(ExcelExportService excelExportService) {this.excelExportService = excelExportService;}
 	
-	@GetMapping("/Excel/Export/Index")
-	public String Index() {
+	@GetMapping("/excel/export/index")
+	public String index() {
 		
-		return "excel/export/Index";
+		return "excel/export/index";
 	}
 	
-	@GetMapping("/Excel/Export/DownExcel")
-	public ResponseEntity<byte[]> DownExcel() throws IOException {
-	    byte[] excelFile = excelExportService.DownExcel();
+	@GetMapping("/excel/export/down-excel")
+	public ResponseEntity<byte[]> downExcel() throws IOException {
+	    byte[] excelFile = excelExportService.downExcel();
 	    
 	    HttpHeaders headers = new HttpHeaders();
 	    headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
@@ -32,9 +32,9 @@ public class ExcelExportController {
 	    return new ResponseEntity<>(excelFile, headers, HttpStatus.OK);
 	}
 	
-	@GetMapping("/Excel/Export/DownExcelEnhance")
-	public ResponseEntity<byte[]> DownExcelEnhance() throws IOException {
-	    byte[] excelFile = excelExportService.DownExcelEnhance();
+	@GetMapping("/excel/export/down-excel-enhance")
+	public ResponseEntity<byte[]> downExcelEnhance() throws IOException {
+	    byte[] excelFile = excelExportService.downExcelEnhance();
 	    
 	    HttpHeaders headers = new HttpHeaders();
 	    headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);

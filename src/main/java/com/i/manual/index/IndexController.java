@@ -8,7 +8,7 @@ public class IndexController {
 	
 	@GetMapping("/")
 	//@ResponseBody
-	public String Index() {
+	public String index() {
 				
 		return "index";
 	}

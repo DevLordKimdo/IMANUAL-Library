@@ -12,18 +12,18 @@ public class XMLParserController {
     private final XMLParserService xmlParserService;
     public XMLParserController(XMLParserService xmlParserService) {this.xmlParserService = xmlParserService;}
 	
-	@GetMapping("/XML/Parser/Form")
-	public String Form() {
+	@GetMapping("/xml/parser/form")
+	public String form() {
 
-		return "xml/parser/Form";
+		return "xml/parser/form";
 	}
 	
-	@PostMapping("/XML/Parser/Upload")
-	public String Upload(@RequestParam("Upload") MultipartFile file) {
+	@PostMapping("/xml/parser/upload")
+	public String upload(@RequestParam("upload") MultipartFile file) {
 		
-		xmlParserService.Upload(file);
+		xmlParserService.upload(file);
 		
-		return "redirect:/XML/Parser/Form";
+		return "redirect:/xml/parser/form";
 	}
 
 }

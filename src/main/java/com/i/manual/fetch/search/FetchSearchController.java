@@ -18,17 +18,17 @@ public class FetchSearchController {
     private final CrudSearchService crudSearchService;
     public FetchSearchController(CrudSearchService crudSearchService) {this.crudSearchService = crudSearchService;}
         
-	@GetMapping("/Fetch/Search/List")
-	public String List(Model model, CrudSearchDTO crudSearchDTO) {
+	@GetMapping("/fetch/search/list")
+	public String list(Model model, CrudSearchDTO crudSearchDTO) {
 		
 		List<CrudSearchDTO> list = crudSearchService.list(crudSearchDTO);
 		model.addAttribute("search", crudSearchDTO);
     	model.addAttribute("list", list);
 								
-		return "fetch/search/List";
+		return "fetch/search/list";
 	}
 	
-	@PostMapping("/Fetch/Search/submitJson")
+	@PostMapping("/fetch/search/submit-json")
 	@ResponseBody
 	public List<CrudSearchDTO> getJson(@RequestBody CrudSearchDTO crudSearchDTO) {
 				
@@ -37,7 +37,7 @@ public class FetchSearchController {
 		return list;
 	}
 	
-	@PostMapping("/Fetch/Search/submitForm")
+	@PostMapping("/fetch/search/submit-form")
 	@ResponseBody
 	public List<CrudSearchDTO> getForm(CrudSearchDTO crudSearchDTO) {
 						

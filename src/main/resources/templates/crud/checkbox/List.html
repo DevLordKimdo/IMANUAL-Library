@@ -27,13 +27,13 @@
 			    </tr>
 		    </thead>
 		    <tbody>
-			    <tr th:each="List: ${List}">
-			    	<td><input type="checkbox" name="checkIdx" th:value="${List.idx}"></td>
-			        <td th:text="${List.idx}"></td>
-			        <td th:text="${List.title}"></td>
-					<td th:text="${List.name}"></td>
-					<td th:text="${List.datetime}"></td>
-			        <td th:text="${List.hit}"></td>
+			    <tr th:each="list: ${list}">
+			    	<td><input type="checkbox" name="checkIdx" th:value="${list.idx}"></td>
+			        <td th:text="${list.idx}"></td>
+			        <td th:text="${list.title}"></td>
+					<td th:text="${list.name}"></td>
+					<td th:text="${list.datetime}"></td>
+			        <td th:text="${list.hit}"></td>
 			    </tr>
 		    </tbody>
 		    <tfoot>
@@ -66,25 +66,25 @@
 	}
 	
 	function fn_checkCopy() {
-       	document.listForm.action = "/Crud/Checkbox/CheckCopy";
+       	document.listForm.action = "/crud/checkbox/check-copy";
        	document.listForm.method = "POST";
        	document.listForm.submit();
 	}
 	
 	function fn_checkUpdateHit() {
-       	document.listForm.action = "/Crud/Checkbox/CheckUpdateHit";
+       	document.listForm.action = "/crud/checkbox/check-update-hit";
        	document.listForm.method = "POST";
        	document.listForm.submit();
 	}
 	
 	function fn_checkUpdate() {
-       	document.listForm.action = "/Crud/Checkbox/CheckUpdate";
+       	document.listForm.action = "/crud/checkbox/check-update";
        	document.listForm.method = "POST";
        	document.listForm.submit();
 	}
 	
 	function fn_checkDelete() {
-       	document.listForm.action = "/Crud/Checkbox/CheckDelete";
+       	document.listForm.action = "/crud/checkbox/check-delete";
        	document.listForm.method = "POST";
        	document.listForm.submit();
 	}

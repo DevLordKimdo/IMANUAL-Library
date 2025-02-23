@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class ExcelInportService {
 	
-	public void Upload(MultipartFile file) throws IOException {
+	public void upload(MultipartFile file) throws IOException {
 		
 		InputStream inputStream = file.getInputStream();
 		Workbook workbook = WorkbookFactory.create(inputStream);

@@ -10,7 +10,7 @@ public class UtilMakeDateTime {
 	
 	LocalDateTime now = LocalDateTime.now();
 	
-	public String Nano() {
+	public String nano() {
 	    int nanoSeconds = now.getNano(); // 나노일자시간 값 가져오기
 	    return String.valueOf(nanoSeconds); // 문자열로 변환하여 반환
 	}

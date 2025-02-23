@@ -12,13 +12,13 @@ import com.i.manual.crud.basic.CrudBasicDTO;
 @Controller
 public class AddRowBasicController {
 	
-	@GetMapping("/AddRow/Basic/Form")
-	public String Form() {
+	@GetMapping("/add-row/basic/form")
+	public String form() {
 		
-		return "addrow/basic/Form";
+		return "addrow/basic/form";
 	}
 	
-	@PostMapping("/AddRow/Basic/Submit")
+	@PostMapping("/add-row/basic/submit")
 	public String Submit(@RequestParam("title")   List<String> title, 
 			             @RequestParam("name")    List<String> name,
 			             @RequestParam("content") List<String> content) {
@@ -37,7 +37,7 @@ public class AddRowBasicController {
 			System.out.println(list.getTitle() + " " + list.getName() + " " + list.getContent());
 		}
 		
-		return "redirect:/AddRow/Basic/Form";
+		return "redirect:/add-row/basic/form";
 	}
 
 }

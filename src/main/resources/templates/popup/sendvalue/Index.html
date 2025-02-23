@@ -6,7 +6,7 @@
 </head>
 <link rel="stylesheet" href="/css/basic/styles.css">
 <body>
-	<form name="Take">
+	<form name="take">
 		이름 : <input type="text" name="name" id="name"><br>
 		제목 : <input type="text" name="title" id="title"><br>
 		옵션 : <select name="option" id="option">
@@ -17,11 +17,11 @@
 		체크 : <input type="checkbox" name="checkbox" id="checkbox"><br>
 		내용 : <textarea name="content" id="content"></textarea><br>
 	</form>
-	<button onclick="fn_OpenPopup()">팝업창 띄우기</button>
+	<button onclick="fn_openPopup()">팝업창 띄우기</button>
 </body>
 <script>
-	function fn_OpenPopup() {
-		window.open('/Popup/Sendvalue/Form','popup','width=300, height=200, top=50, left=50, scrollbars=yes')
+	function fn_openPopup() {
+		window.open('/popup/send-value/form','popup','width=300, height=200, top=50, left=50, scrollbars=yes')
 	}
 </script>
 </html>

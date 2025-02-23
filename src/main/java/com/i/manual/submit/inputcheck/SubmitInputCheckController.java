@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class SubmitInputCheckController {
 	
-	@GetMapping("/Submit/InputCheck/Form")
-	public String List() {
+	@GetMapping("/submit/input-check/form")
+	public String list() {
 						
-		return "submit/inputcheck/Form";
+		return "submit/inputcheck/form";
 	}
 
 }

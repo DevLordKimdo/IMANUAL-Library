@@ -4,48 +4,48 @@ import java.security.SecureRandom;
 
 public class UtilMakeCrypto {
 	
-	public String StringNum(int Digit) {
+	public String stringNum(int Digit) {
 		
-		String Characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 		
-        SecureRandom Random = new SecureRandom();
-        StringBuilder CryptoNumber = new StringBuilder(Digit);
+        SecureRandom random = new SecureRandom();
+        StringBuilder cryptoNumber = new StringBuilder(Digit);
 
         for (int i = 0; i < Digit; i++) {
-            int index = Random.nextInt(Characters.length());
-            CryptoNumber.append(Characters.charAt(index));
+            int index = random.nextInt(characters.length());
+            cryptoNumber.append(characters.charAt(index));
         }
         
-        return CryptoNumber.toString().toUpperCase();
+        return cryptoNumber.toString().toUpperCase();
 	}
 	
-	public String NumberOnly(int Digit) {
+	public String numberOnly(int Digit) {
 		
-		String Characters = "0123456789";
+		String characters = "0123456789";
 		
-        SecureRandom Random = new SecureRandom();
-        StringBuilder CryptoNumber = new StringBuilder(Digit);
+        SecureRandom random = new SecureRandom();
+        StringBuilder cryptoNumber = new StringBuilder(Digit);
 
         for (int i = 0; i < Digit; i++) {
-            int index = Random.nextInt(Characters.length());
-            CryptoNumber.append(Characters.charAt(index));
+            int index = random.nextInt(characters.length());
+            cryptoNumber.append(characters.charAt(index));
         }
         
-        return CryptoNumber.toString().toUpperCase();
+        return cryptoNumber.toString().toUpperCase();
 	}
 	
-	public String StringOnly(int Digit) {
+	public String stringOnly(int Digit) {
 		
-		String Characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		
-        SecureRandom Random = new SecureRandom();
-        StringBuilder CryptoNumber = new StringBuilder(Digit);
+        SecureRandom random = new SecureRandom();
+        StringBuilder cryptoNumber = new StringBuilder(Digit);
 
         for (int i = 0; i < Digit; i++) {
-            int index = Random.nextInt(Characters.length());
-            CryptoNumber.append(Characters.charAt(index));
+            int index = random.nextInt(characters.length());
+            cryptoNumber.append(characters.charAt(index));
         }
         
-        return CryptoNumber.toString().toUpperCase();
+        return cryptoNumber.toString().toUpperCase();
 	}
 }

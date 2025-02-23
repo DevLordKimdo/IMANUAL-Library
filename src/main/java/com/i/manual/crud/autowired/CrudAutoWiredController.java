@@ -17,54 +17,54 @@ public class CrudAutoWiredController {
 	@Autowired
     CrudAutoWiredService crudAutoWiredService;
     
-	@GetMapping("/Crud/AutoWired/List")
-	public String List(Model model) {
+	@GetMapping("/crud/auto-wired/list")
+	public String list(Model model) {
 		
-		List<CrudBasicDTO> List = crudAutoWiredService.list();
-    	model.addAttribute("List", List);
+		List<CrudBasicDTO> list = crudAutoWiredService.list();
+    	model.addAttribute("list", list);
 		
-		return "crud/AutoWired/List";
+		return "crud/autowired/list";
 	}
 	
-	@GetMapping("/Crud/AutoWired/Create")
-	public String Create() {
+	@GetMapping("/crud/auto-wired/create")
+	public String create() {
 		
-		return "crud/AutoWired/Create";
+		return "crud/autowired/create";
 	}
 	
-	@PostMapping("/Crud/AutoWired/Create")
-	public String Create(CrudBasicDTO crudBasicDTO) {
+	@PostMapping("/crud/auto-wired/create")
+	public String create(CrudBasicDTO crudBasicDTO) {
 		
 		crudAutoWiredService.create(crudBasicDTO);
 		
-		return "redirect:/Crud/AutoWired/List";
+		return "redirect:/crud/auto-wired/list";
 	}
 	
-	@GetMapping("/Crud/AutoWired/Read/{idx}")
-	public String Read(@PathVariable("idx") String idx, Model model) {
+	@GetMapping("/crud/auto-wired/read/{idx}")
+	public String read(@PathVariable("idx") String idx, Model model) {
 		
 		crudAutoWiredService.updateHit(idx);
 		CrudBasicDTO crudBasicDTO = crudAutoWiredService.read(idx);
-		model.addAttribute("Read", crudBasicDTO);
+		model.addAttribute("read", crudBasicDTO);
 		
-		return "crud/AutoWired/Read";
+		return "crud/autowired/read";
 	}
 	
-	@PostMapping("/Crud/AutoWired/Update/{idx}")
-	public String Update(@PathVariable("idx") String idx, CrudBasicDTO crudBasicDTO) {
+	@PostMapping("/crud/auto-wired/update/{idx}")
+	public String update(@PathVariable("idx") String idx, CrudBasicDTO crudBasicDTO) {
 						
 		crudBasicDTO.setIdx(idx);
 		crudAutoWiredService.update(crudBasicDTO);
 		
-		return "redirect:/Crud/AutoWired/Read/" + idx;
+		return "redirect:/crud/auto-wired/read/" + idx;
 	}
 	
-	@GetMapping("/Crud/AutoWired/Delete/{idx}")
-	public String Delete(@PathVariable("idx") String idx) {
+	@GetMapping("/crud/auto-wired/delete/{idx}")
+	public String delete(@PathVariable("idx") String idx) {
 		
 		crudAutoWiredService.delete(idx);
 		
-		return "redirect:/Crud/AutoWired/List";
+		return "redirect:/crud/auto-wired/list";
 	}
 
 }

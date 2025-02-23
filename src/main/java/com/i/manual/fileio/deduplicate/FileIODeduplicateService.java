@@ -13,12 +13,12 @@ import com.i.manual.util.UtilMakeDateTime;
 @Service
 public class FileIODeduplicateService {
 		
-	public void UploadNoOption(List<MultipartFile> files, String Directory) throws IOException {
+	public void uploadNoOption(List<MultipartFile> files, String directory) throws IOException {
 		
 		if (!files.isEmpty()) {
 	            
             // 파일 저장 경로 생성
-            Path uploadPath = Paths.get(Directory);
+            Path uploadPath = Paths.get(directory);
             
             // 디렉토리가 존재하지 않으면 생성
             if (!Files.exists(uploadPath)) {
@@ -34,12 +34,12 @@ public class FileIODeduplicateService {
 	    }
 	}
 	
-	public void UploadAddNumber(List<MultipartFile> files, String Directory) throws IOException {
+	public void uploadAddNumber(List<MultipartFile> files, String directory) throws IOException {
 		
 		if (!files.isEmpty()) {
             
             // 파일 저장 경로 생성
-            Path uploadPath = Paths.get(Directory);
+            Path uploadPath = Paths.get(directory);
             
             // 디렉토리가 존재하지 않으면 생성
             if (!Files.exists(uploadPath)) {
@@ -67,12 +67,12 @@ public class FileIODeduplicateService {
 	    }
 	}
 	
-	public void UploadAddSysTime(List<MultipartFile> files, String Directory) throws IOException {
+	public void uploadAddSysTime(List<MultipartFile> files, String directory) throws IOException {
 		
 		if (!files.isEmpty()) {
             
             // 파일 저장 경로 생성
-            Path uploadPath = Paths.get(Directory);
+            Path uploadPath = Paths.get(directory);
             
             // 디렉토리가 존재하지 않으면 생성
             if (!Files.exists(uploadPath)) {
@@ -84,19 +84,19 @@ public class FileIODeduplicateService {
             // 각 파일을 저장
             for (MultipartFile file : files) {
                 String fileName = file.getOriginalFilename();
-                String nanoTime = utilMakeDateTime.Nano();
+                String nanoTime = utilMakeDateTime.nano();
                 Path filePath = uploadPath.resolve(nanoTime+fileName);
                 Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
             }
 	    }
 	}
 	
-	public void UploadCrypto(List<MultipartFile> files, String Directory) throws IOException {
+	public void uploadCrypto(List<MultipartFile> files, String directory) throws IOException {
 		
 		if (!files.isEmpty()) {
             
             // 파일 저장 경로 생성
-            Path uploadPath = Paths.get(Directory);
+            Path uploadPath = Paths.get(directory);
             
             // 디렉토리가 존재하지 않으면 생성
             if (!Files.exists(uploadPath)) {
@@ -109,7 +109,7 @@ public class FileIODeduplicateService {
             for (MultipartFile file : files) {
             	String fileName = file.getOriginalFilename();
             	String extension = fileName.substring(fileName.lastIndexOf("."));
-            	String toCrypto = utilMakeCrypto.StringNum(10) + extension;
+            	String toCrypto = utilMakeCrypto.stringNum(10) + extension;
                 Path filePath = uploadPath.resolve(toCrypto);
                 Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
             }

@@ -18,42 +18,42 @@ public class PaginationJSFormController {
 	private final PaginationBasicService paginationBasicService;
     public PaginationJSFormController(PaginationBasicService paginationBasicService) {this.paginationBasicService = paginationBasicService;}
     
-    @GetMapping("/Pagination/JSForm/List/{currentPageIndex}")
-	public String ListGet(@PathVariable("currentPageIndex") int currentPageIndex , Model model) {
+    @GetMapping("/pagination/js-form/list/{currentPageIndex}")
+	public String listGet(@PathVariable("currentPageIndex") int currentPageIndex , Model model) {
 
-		int Count = paginationBasicService.count();
+		int count = paginationBasicService.count();
 		int postsPerPage = 10;
 		int pageStartIndex = (currentPageIndex - 1) * postsPerPage;
-		UtilPagination utilPagination = new UtilPagination(currentPageIndex, postsPerPage, Count);
+		UtilPagination utilPagination = new UtilPagination(currentPageIndex, postsPerPage, count);
 		model.addAttribute("page", utilPagination);
 
 		PaginationBasicDTO paginationBasicDTO = new PaginationBasicDTO();
 		paginationBasicDTO.setPostsPerPage(postsPerPage);
 		paginationBasicDTO.setPageStart(pageStartIndex);
 		
-		List<PaginationBasicDTO> List = paginationBasicService.list(paginationBasicDTO);
-    	model.addAttribute("List", List);
+		List<PaginationBasicDTO> list = paginationBasicService.list(paginationBasicDTO);
+    	model.addAttribute("list", list);
 		
-		return "pagination/jsform/List";
+		return "pagination/jsform/list";
 	}
     
-    @PostMapping("/Pagination/JSForm/List/{currentPageIndex}")
-	public String ListPost(@PathVariable("currentPageIndex") int currentPageIndex , Model model) {
+    @PostMapping("/pagination/js-form/list/{currentPageIndex}")
+	public String listPost(@PathVariable("currentPageIndex") int currentPageIndex , Model model) {
 
-		int Count = paginationBasicService.count();
+		int count = paginationBasicService.count();
 		int postsPerPage = 10;
 		int pageStartIndex = (currentPageIndex - 1) * postsPerPage;
-		UtilPagination utilPagination = new UtilPagination(currentPageIndex, postsPerPage, Count);
+		UtilPagination utilPagination = new UtilPagination(currentPageIndex, postsPerPage, count);
 		model.addAttribute("page", utilPagination);
 
 		PaginationBasicDTO paginationBasicDTO = new PaginationBasicDTO();
 		paginationBasicDTO.setPostsPerPage(postsPerPage);
 		paginationBasicDTO.setPageStart(pageStartIndex);
 		
-		List<PaginationBasicDTO> List = paginationBasicService.list(paginationBasicDTO);
-    	model.addAttribute("List", List);
+		List<PaginationBasicDTO> list = paginationBasicService.list(paginationBasicDTO);
+    	model.addAttribute("list", list);
 		
-		return "pagination/jsform/List";
+		return "pagination/jsform/list";
 	}
     
 }

@@ -8,15 +8,15 @@
 <body>
 	<div>
 		<h2>Search Form</h2>
-		<form action="/Crud/Search/List" method="post">
-			<select name="SearchOption" th:with="SearchOption=${Search.searchOption}">
-				<option value="title"   th:selected="${SearchOption == 'title'}"  >Title</option>
-				<option value="content" th:selected="${SearchOption == 'content'}">Content</option>
-				<option value="name"    th:selected="${SearchOption == 'name'}"   >Name</option>
+		<form action="/crud/search/list" method="post">
+			<select name="searchOption" th:with="searchOption=${search.searchOption}">
+				<option value="title"   th:selected="${searchOption == 'title'}"  >title</option>
+				<option value="content" th:selected="${searchOption == 'content'}">content</option>
+				<option value="name"    th:selected="${searchOption == 'name'}"   >name</option>
 			</select>
-			<input type="text" name="SearchKeyword" th:value="${Search.searchKeyword}">
-			<input type="date" name="SearchDateStart"> ~
-			<input type="date" name="SearchDateEnded">
+			<input type="text" name="searchKeyword" th:value="${search.searchKeyword}">
+			<input type="date" name="searchDateStart"> ~
+			<input type="date" name="searchDateEnded">
 			<input type="submit" value="검색">
 		</form>
 	</div>
@@ -39,12 +39,12 @@
 			    </tr>
 		    </thead>
 		    <tbody>
-			    <tr th:each="List: ${List}">
-			        <td th:text="${List.idx}"></td>
-			        <td th:text="${List.title}"></td>
-					<td th:text="${List.name}"></td>
-					<td th:text="${List.datetime}"></td>
-			        <td th:text="${List.hit}"></td>
+			    <tr th:each="list: ${list}">
+			        <td th:text="${list.idx}"></td>
+			        <td th:text="${list.title}"></td>
+					<td th:text="${list.name}"></td>
+					<td th:text="${list.datetime}"></td>
+			        <td th:text="${list.hit}"></td>
 			    </tr>
 		    </tbody>
 		</table>

@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PopupModalController {
 	
-	@GetMapping("/Popup/Modal/Index")
-	public String Index() {
+	@GetMapping("/popup/modal/index")
+	public String index() {
 
-		return "popup/modal/Index";
+		return "popup/modal/index";
 	}
 
 }

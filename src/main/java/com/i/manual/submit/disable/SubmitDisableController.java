@@ -9,14 +9,14 @@ import jakarta.servlet.http.HttpServletRequest;
 @Controller
 public class SubmitDisableController {
 	
-	@GetMapping("/Submit/Disable/Form")
-	public String Form() {
+	@GetMapping("/submit/disable/form")
+	public String form() {
 								
 		return "submit/disable/form";
 	}
 	
-	@PostMapping("/Submit/Disable/Submit")
-	public String Submit(HttpServletRequest request) {
+	@PostMapping("/submit/disable/submit")
+	public String submit(HttpServletRequest request) {
 		
 	    System.out.println( "textNormal Value : " +  request.getParameter("textNormal") );
 	    System.out.println( "textReadonly Value : " +  request.getParameter("textReadonly") );
@@ -44,7 +44,7 @@ public class SubmitDisableController {
 	    System.out.println( "textareaReadonly Value : " +  request.getParameter("textareaReadonly") );
 	    System.out.println( "textareaDisabled Value : " +  request.getParameter("textareaDisabled") );
 	    
-		return "redirect:/Submit/Disable/Form";
+		return "redirect:/submit/disable/form";
 	}
 
 }

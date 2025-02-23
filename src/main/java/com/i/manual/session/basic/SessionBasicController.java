@@ -9,57 +9,57 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class SessionBasicController {
 	
-	@GetMapping("/Session/Basic/Index")
-	public String Index() {
+	@GetMapping("/session/basic/index")
+	public String index() {
 
-		return "session/basic/Index";
+		return "session/basic/index";
 	}
 	
-	@GetMapping("/Session/Basic/RequestSessionA")
-	public String RequestSessionA(HttpServletRequest request) {
+	@GetMapping("/session/basic/request-session-a")
+	public String requestSessionA(HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		session.setMaxInactiveInterval(3600);
-		session.setAttribute("SessionName", "valueA");
+		session.setAttribute("session-name", "value-a");
 
-		return "redirect:/Session/Basic/Index";
+		return "redirect:/session/basic/index";
 	}
 	
-	@GetMapping("/Session/Basic/RequestSessionB")
-	public String RequestSessionB(HttpServletRequest request) {
+	@GetMapping("/session/basic/request-session-b")
+	public String requestSessionB(HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		session.setMaxInactiveInterval(3600);
-		session.setAttribute("SessionName", "valueB");
+		session.setAttribute("session-name", "value-b");
 
-		return "redirect:/Session/Basic/Index";
+		return "redirect:/session/basic/index";
 	}
 	
-	@GetMapping("/Session/Basic/CheckSession")
-	public String CheckSession(HttpServletRequest request) {
+	@GetMapping("/session/basic/check-session")
+	public String checkSession(HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		
-		System.out.println(session.getAttribute("SessionName"));
+		System.out.println(session.getAttribute("session-name"));
 		
-		if((String)session.getAttribute("SessionName") == "valueA") {
+		if((String)session.getAttribute("session-name") == "value-a") {
 			System.out.println("A 세션이 맞습니다.");
-		} else if(session.getAttribute("SessionName") == null) {
+		} else if(session.getAttribute("session-name") == null) {
 			System.out.println("세션이 없습니다.");
 		} else {
 			System.out.println("A 세션이 아닙니다.");
 		}
 
-		return "redirect:/Session/Basic/Index";
+		return "redirect:/session/basic/index";
 	}
 	
-	@GetMapping("/Session/Basic/DeleteSession")
-	public String DeleteSession(HttpServletRequest request) {
+	@GetMapping("/session/basic/delete-session")
+	public String deleteSession(HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		session.invalidate();
 
-		return "redirect:/Session/Basic/Index";
+		return "redirect:/session/basic/index";
 	}
 	
 }

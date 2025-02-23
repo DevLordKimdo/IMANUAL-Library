@@ -15,14 +15,14 @@ public class AddRowSubmitController {
     private final AddRowSubmitService addRowSubmitService;
     public AddRowSubmitController(AddRowSubmitService addRowSubmitService) {this.addRowSubmitService = addRowSubmitService;}
 	
-	@GetMapping("/AddRow/Submit/Form")
-	public String Form() {
+	@GetMapping("/add-row/submit/form")
+	public String form() {
 		
-		return "addrow/submit/Form";
+		return "addrow/submit/form";
 	}
 
-	@PostMapping("/AddRow/Submit/Create")
-	public String Create(@RequestParam("title")   List<String> title,
+	@PostMapping("/add-row/submit/create")
+	public String create(@RequestParam("title")   List<String> title,
 			             @RequestParam("name")    List<String> name,
 			             @RequestParam("content") List<String> content) {
 		
@@ -38,7 +38,7 @@ public class AddRowSubmitController {
 		
 		addRowSubmitService.create(crudBasicDTOList);
 		
-		return "redirect:/AddRow/Submit/Form";
+		return "redirect:/add-row/submit/form";
 	}
 
 }

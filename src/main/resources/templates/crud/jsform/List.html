@@ -25,17 +25,17 @@
 		    </tr>
 	    </thead>
 	    <tbody>
-		    <tr th:each="List: ${List}">
-		        <td th:text="${List.idx}"></td>
-		        <td><span th:text="${List.title}" th:onclick="@{|fn_read(${List.idx})|}" style="cursor: pointer;"></span></td>
-				<td th:text="${List.name}"></td>
-				<td th:text="${List.datetime}"></td>
-		        <td th:text="${List.hit}"></td>
+		    <tr th:each="list: ${list}">
+		        <td th:text="${list.idx}"></td>
+		        <td><span th:text="${list.title}" th:onclick="@{|fn_read(${list.idx})|}" style="cursor: pointer;"></span></td>
+				<td th:text="${list.name}"></td>
+				<td th:text="${list.datetime}"></td>
+		        <td th:text="${list.hit}"></td>
 		    </tr>
 	    </tbody>
 	    <tfoot>
 			<tr>
-				<td><a href="/Crud/JSForm/Create"><button>글작성</button></a></td>
+				<td><a href="/crud/js-form/create"><button>글작성</button></a></td>
 			</tr>
 	    </tfoot>
 	</table>
@@ -43,7 +43,7 @@
 </body>
 <script type="text/javaScript">
 	function fn_read(idx) {
-		document.listform.action = "/Crud/JSForm/Read/"+idx;
+		document.listform.action = "/crud/js-form/read/"+idx;
 		document.listform.method = "POST";
 		document.listform.submit();
 	}

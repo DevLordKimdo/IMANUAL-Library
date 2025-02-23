@@ -6,16 +6,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PopupSendvalueController {
 	
-	@GetMapping("/Popup/Sendvalue/Index")
-	public String Index() {
+	@GetMapping("/popup/send-value/index")
+	public String index() {
 
-		return "popup/sendvalue/Index";
+		return "popup/sendvalue/index";
 	}
 	
-	@GetMapping("/Popup/Sendvalue/Form")
-	public String Popup() {
+	@GetMapping("/popup/send-value/form")
+	public String popup() {
 
-		return "popup/sendvalue/Form";
+		return "popup/sendvalue/form";
 	}
 
 }

@@ -24,17 +24,17 @@
 		    </tr>
 	    </thead>
 	    <tbody>
-		    <tr th:each="List: ${List}">
-		        <td th:text="${List.idx}"></td>
-		        <td><a th:text="${List.title}" th:href="@{|/Crud/LegacyQuery/Read/${List.idx}|}"></a></td>
-				<td th:text="${List.name}"></td>
-				<td th:text="${List.datetime}"></td>
-		        <td th:text="${List.hit}"></td>
+		    <tr th:each="list: ${list}">
+		        <td th:text="${list.idx}"></td>
+		        <td><a th:text="${list.title}" th:href="@{|/crud/legacy-query/read/${list.idx}|}"></a></td>
+				<td th:text="${list.name}"></td>
+				<td th:text="${list.datetime}"></td>
+		        <td th:text="${list.hit}"></td>
 		    </tr>
 	    </tbody>
 	    <tfoot>
 			<tr>
-				<td><a href="/Crud/LegacyQuery/Create"><button>글작성</button></a></td>
+				<td><a href="/crud/legacy-query/create"><button>글작성</button></a></td>
 			</tr>
 	    </tfoot>
 	</table>

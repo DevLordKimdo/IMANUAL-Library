@@ -16,37 +16,40 @@ public class CrudReturnIdxController {
     private final CrudReturnIdxService crudReturnIdxService;
     public CrudReturnIdxController(CrudReturnIdxService crudReturnIdxService) {this.crudReturnIdxService = crudReturnIdxService;}
     
-	@GetMapping("/Crud/ReturnIdx/List")
-	public String List(Model model) {
+	@GetMapping("/crud/return-idx/list")
+	public String list(Model model) {
 		
-		List<CrudBasicDTO> List = crudReturnIdxService.list();
-    	model.addAttribute("List", List);
+		List<CrudBasicDTO> list = crudReturnIdxService.list();
+    	model.addAttribute("list", list);
 		
-		return "crud/ReturnIdx/List";
+		return "crud/returnidx/list";
 	}
 	
-	@GetMapping("/Crud/ReturnIdx/Create")
-	public String Create() {
+	@GetMapping("/crud/return-idx/create")
+	public String create() {
 		
-		return "crud/ReturnIdx/Create";
+		return "crud/returnidx/create";
 	}
 	
-	@PostMapping("/Crud/ReturnIdx/Create")
-	public String Create(CrudBasicDTO crudBasicDTO) {
+	@PostMapping("/crud/return-idx/create")
+	public String create(CrudBasicDTO crudBasicDTO) {
 		
 		crudReturnIdxService.create(crudBasicDTO);
 		
-		return "redirect:/Crud/ReturnIdx/Read/" + crudBasicDTO.getIdx();
+		return "redirect:/crud/return-idx/read/" + crudBasicDTO.getIdx();
 	}
 	
-	@GetMapping("/Crud/ReturnIdx/Read/{idx}")
-	public String Read(@PathVariable("idx") String idx, Model model) {
+	@GetMapping("/crud/return-idx/read/{idx}")
+	public String read(@PathVariable("idx") String idx, Model model) {
 		
 		crudReturnIdxService.updateHit(idx);
 		CrudBasicDTO crudBasicDTO = crudReturnIdxService.read(idx);
-		model.addAttribute("Read", crudBasicDTO);
+		model.addAttribute("read", crudBasicDTO);
 		
-		return "crud/returnidx/Read";
+		return "crud/returnidx/read";
 	}
 
 }
+
+// 글 작성 후 작성 한 idx(인덱스) 번호값을 바로 가져오는 기능을 사용해보기.
+// CrudReturnIdx-mapper.xml 에서 useGeneratedKeys="true" keyProperty="idx" 를 사용함.

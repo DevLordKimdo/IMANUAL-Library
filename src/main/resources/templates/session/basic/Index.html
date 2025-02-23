@@ -8,35 +8,35 @@
 <body>
 	<h2>Session Request</h2>
 	<div>
-		<button onclick="fn_RequestSessionA()">A 세션 발행</button>
-		<button onclick="fn_RequestSessionB()">B 세션 발행</button>
+		<button onclick="fn_requestSessionA()">A 세션 발행</button>
+		<button onclick="fn_requestSessionB()">B 세션 발행</button>
 	</div>
 	
 	<h2>Check Session</h2>
 	<div>
-		<button onclick="fn_CheckSession()">A 세션 확인</button>
+		<button onclick="fn_checkSession()">A 세션 확인</button>
 	</div>
 	
 	<h2>Delete Session</h2>
 	<div>
-		<button onclick="fn_DeleteSession()">세션 삭제</button>
+		<button onclick="fn_deleteSession()">세션 삭제</button>
 	</div>
 </body>
 <script>
-	function fn_RequestSessionA() {
-		location.href = "/Session/Basic/RequestSessionA";
+	function fn_requestSessionA() {
+		location.href = "/session/basic/request-session-a";
 	}
 	
-	function fn_RequestSessionB() {
-		location.href = "/Session/Basic/RequestSessionB";
+	function fn_requestSessionB() {
+		location.href = "/session/basic/request-session-b";
 	}
 	
-	function fn_CheckSession() {
-		location.href = "/Session/Basic/CheckSession";
+	function fn_checkSession() {
+		location.href = "/session/basic/check-session";
 	}
 
-	function fn_DeleteSession() {
-		location.href = "/Session/Basic/DeleteSession";
+	function fn_deleteSession() {
+		location.href = "/session/basic/delete-session";
 	}
 	
 </script>

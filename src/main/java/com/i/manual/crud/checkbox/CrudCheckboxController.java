@@ -16,45 +16,45 @@ public class CrudCheckboxController {
     private final CrudCheckboxService crudCheckboxService;
     public CrudCheckboxController(CrudCheckboxService crudCheckboxService) {this.crudCheckboxService = crudCheckboxService;}
     
-	@GetMapping("/Crud/Checkbox/List")
-	public String List(Model model) {
+	@GetMapping("/crud/checkbox/list")
+	public String list(Model model) {
 		
-		List<CrudBasicDTO> List = crudCheckboxService.list();
-    	model.addAttribute("List", List);
+		List<CrudBasicDTO> list = crudCheckboxService.list();
+    	model.addAttribute("list", list);
 				
-		return "crud/checkbox/List";
+		return "crud/checkbox/list";
 	}
 	
-	@PostMapping("/Crud/Checkbox/CheckCopy")
-	public String CheckCopy(@RequestParam("checkIdx") List<String> checkIdx) {
+	@PostMapping("/crud/checkbox/check-copy")
+	public String checkCopy(@RequestParam("checkIdx") List<String> checkIdx) {
 		
 		crudCheckboxService.checkCopy(checkIdx);
 
-		return "redirect:/Crud/Checkbox/List";
+		return "redirect:/crud/checkbox/list";
 	}
 	
-	@PostMapping("/Crud/Checkbox/CheckUpdate")
-	public String CheckUpdate(@RequestParam("checkIdx") List<String> checkIdx) {
+	@PostMapping("/crud/checkbox/check-update")
+	public String checkUpdate(@RequestParam("checkIdx") List<String> checkIdx) {
 		
 		crudCheckboxService.checkUpdate(checkIdx);
 
-		return "redirect:/Crud/Checkbox/List";
+		return "redirect:/crud/checkbox/list";
 	}
 	
-	@PostMapping("/Crud/Checkbox/CheckUpdateHit")
-	public String CheckUpdateHit(@RequestParam("checkIdx") List<String> checkIdx) {
+	@PostMapping("/crud/checkbox/check-update-hit")
+	public String checkUpdateHit(@RequestParam("checkIdx") List<String> checkIdx) {
 		
 		crudCheckboxService.checkUpdateHit(checkIdx);
 
-		return "redirect:/Crud/Checkbox/List";
+		return "redirect:/crud/checkbox/list";
 	}
 	
-	@PostMapping("/Crud/Checkbox/CheckDelete")
-	public String CheckDelete(@RequestParam("checkIdx") List<String> checkIdx) {
+	@PostMapping("/crud/checkbox/check-delete")
+	public String checkDelete(@RequestParam("checkIdx") List<String> checkIdx) {
 		
 		crudCheckboxService.checkDelete(checkIdx);
 
-		return "redirect:/Crud/Checkbox/List";
+		return "redirect:/crud/checkbox/list";
 	}
 
 }

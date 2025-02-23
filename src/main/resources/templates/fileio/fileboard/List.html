@@ -24,18 +24,18 @@
 		    </tr>
 	    </thead>
 	    <tbody>
-		    <tr th:each="List: ${List}">
-				<td th:if="${List.postidx != null}" th:text="${List.postidx}" th:attr="rowspan=${List.postcount}"></td>
-				<td th:text="${List.name}"></td>
-				<td th:text="${List.size}"></td>
-				<td th:text="${List.seq}"></td>
-				<td th:text="${List.datetime}"></td>
+		    <tr th:each="list: ${list}">
+				<td th:if="${list.postIdx != null}" th:text="${list.postIdx}" th:attr="rowspan=${list.postCount}"></td>
+				<td th:text="${list.name}"></td>
+				<td th:text="${list.size}"></td>
+				<td th:text="${list.seq}"></td>
+				<td th:text="${list.datetime}"></td>
 		    </tr>
 	    </tbody>
 	    <tfoot>
 	    	<tr>
 	    		<td colspan="5">
-	    			<a href="/FileIO/FileBoard/Upload"><button>파일업로드</button></a>
+	    			<a href="/file-io/file-board/upload"><button>파일업로드</button></a>
 	    		</td>
 	    	</tr>
 	    </tfoot>

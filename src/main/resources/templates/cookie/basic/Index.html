@@ -8,36 +8,36 @@
 <body>
 	<div>
 		<h2>BACKEND</h2>
-		<button onclick="fn_RequestCookieBackend()">쿠키 발행</button>
+		<button onclick="fn_requestCookieBackend()">쿠키 발행</button>
 	</div>
 	<div>
 		<h2>FRONTEND</h2>
-		<button onclick="fn_RequestCookieFrontend()">쿠키 발행</button>
+		<button onclick="fn_requestCookieFrontend()">쿠키 발행</button>
 	</div>
 	<div>
 		<h2>Check</h2>
-		<button onclick="fn_CheckCookie()">쿠키 확인</button>
+		<button onclick="fn_checkCookie()">쿠키 확인</button>
 	</div>
 </body>
 <script>
-	function fn_RequestCookieBackend() {
-		location.href = "/Cookie/Basic/RequestBackend";
+	function fn_requestCookieBackend() {
+		location.href = "/cookie/basic/request-backend";
 	}
 	
-	function fn_RequestCookieFrontend() {
+	function fn_requestCookieFrontend() {
 	    var date = new Date();
 	    date.setTime(date.getTime() + (3600 * 1000)); // (초 * 나노시간)
 		
-		let cookieName = "CookieName";
-		let value      = "Frontend";
+		let cookieName = "cookie-name";
+		let value      = "front-end";
 		let expires    = "expires=" + date.toUTCString();
 		//let expires    = "expires=" + date.toLocaleString(); // 거주하고 있는 국가 시간으로 설정.(필요없음)
 		
 		document.cookie = cookieName + "=" + (value || "") + ";" + expires + ";" + "path=/";
 	}
 	
-	function fn_CheckCookie() {
-		location.href = "/Cookie/Basic/CheckCookie";
+	function fn_checkCookie() {
+		location.href = "/cookie/basic/check-cookie";
 	}
 
 </script>

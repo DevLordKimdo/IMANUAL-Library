@@ -19,82 +19,82 @@ public class FileIOBasicController {
     private final FileIOBasicService fileIOBasicService;
     public FileIOBasicController(FileIOBasicService fileIOBasicService) {this.fileIOBasicService = fileIOBasicService;}
 	
-	@GetMapping("/FileIO/Basic/Form")
-	public String Form() {
+	@GetMapping("/file-io/basic/form")
+	public String form() {
 
-		return "fileio/basic/Form";
+		return "fileio/basic/form";
 	}
 
-    @GetMapping("/FileIO/Basic/SampleDownload")
-    public void SampleDownload(HttpServletResponse response)  {
+    @GetMapping("/file-io/basic/sample-download")
+    public void sampleDownload(HttpServletResponse response)  {
         // 다운로드 파일 경로 지정
-        final String SampleFile = "C:/download/Sample.png";
+        final String sampleFile = "C:/download/Sample.png";
     	
         try {
-        	fileIOBasicService.SampleDownload(response, SampleFile);
+        	fileIOBasicService.sampleDownload(response, sampleFile);
         } catch (IOException e) {
             e.printStackTrace();
         }
         
     }
 	
-	@PostMapping("/FileIO/Basic/SingleUpload")
-	public String SingleUpload(@RequestParam("SingleUpload") MultipartFile file) {
+	@PostMapping("/file-io/basic/single-upload")
+	public String SingleUpload(@RequestParam("singleUpload") MultipartFile file) {
 		
         // 파일 저장 경로 지정
 		String Directory = "C:/upload/";
 		
         try {
-        	fileIOBasicService.SingleUpload(file, Directory);
+        	fileIOBasicService.singleUpload(file, Directory);
         } catch (IOException e) {
             e.printStackTrace();
         }
 		
-		return "redirect:/FileIO/Basic/Form";
+		return "redirect:/file-io/basic/form";
 	}
 	
-	@PostMapping("/FileIO/Basic/MultiUpload")
-	public String MultiUpload(@RequestParam("MultiUpload") List<MultipartFile> files) {
+	@PostMapping("/file-io/basic/multi-upload")
+	public String multiUpload(@RequestParam("multiUpload") List<MultipartFile> files) {
 		
 		// 파일 저장 경로 지정
-		String Directory = "C:/upload/";
+		String directory = "C:/upload/";
 
         try {
-        	fileIOBasicService.MultiUpload(files, Directory);
+        	fileIOBasicService.multiUpload(files, directory);
         } catch (Exception e) {
             e.printStackTrace();
         }
 		
-		return "redirect:/FileIO/Basic/Form";
+		return "redirect:/file-io/basic/form";
 	}
 	
-	@PostMapping("/FileIO/Basic/DeleteTarget")
-	public String DeleteTarget(HttpServletRequest request) {
+	@PostMapping("/file-io/basic/delete-target")
+	public String deleteTarget(HttpServletRequest request) {
 		
 		// 삭제 폴더 경로
-		String Directory = "C:/upload";
+		String directory = "C:/upload";
         
 		// 삭제 대상 파일 이름
-		String DeleteTarget = request.getParameter("DeleteTarget"); // 삭제할 파일 이름
+		String deleteTarget = request.getParameter("deleteTarget"); // 삭제할 파일 이름
 		
-		fileIOBasicService.DeleteTarget(Directory, DeleteTarget);
+		fileIOBasicService.deleteTarget(directory, deleteTarget);
 		
-        return "redirect:/FileIO/Basic/Form";
+        return "redirect:/file-io/basic/form";
 	}
 	
-	@GetMapping("/FileIO/Basic/DeleteAll")
-	public String DeleteAll() {
+	@GetMapping("/file-io/basic/delete-all")
+	public String deleteAll() {
 		
         // 삭제 폴더 경로
-        String Directory = "C:/upload/";
+        String directory = "C:/upload/";
 		
         try {
-        	fileIOBasicService.DeleteAll(Directory);
+        	fileIOBasicService.deleteAll(directory);
         } catch (IOException e) {
             e.printStackTrace();
         }
 		
-		return "redirect:/FileIO/Basic/Form";
+		return "redirect:/file-io/basic/form";
 	}
 	
 }

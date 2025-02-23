@@ -6,7 +6,7 @@
 </head>
 <link rel="stylesheet" href="/css/basic/styles.css">
 <body>
-	<form name="Form">
+	<form name="form">
 		숫자A : <input type="number" name="numA"><br>
 		숫자B : <input type="number" name="numB"><br>
 		기호(+ - * / 선택)<input type="text" name="type"><br>
@@ -16,16 +16,16 @@
 </body>
 <script>
 	function sendRequest() {
-	  let numA = document.Form.numA.value;
-	  let numB = document.Form.numB.value;
-	  let type = document.Form.type.value;
+	  let numA = document.form.numA.value;
+	  let numB = document.form.numB.value;
+	  let type = document.form.type.value;
 
 	  let formData = new FormData();
 	  formData.append('numA', numA);
 	  formData.append('numB', numB);
 	  formData.append('type', type);
 	
-	  fetch('/Fetch/Calculator/Result', {method: 'POST',body: formData})
+	  fetch('/fetch/calculator/result', {method: 'POST', body: formData})
 	  .then(response => response.text())
 	  .then(data => {document.getElementById('result').textContent = data;})
 	  .catch(error => console.error('에러:', error));

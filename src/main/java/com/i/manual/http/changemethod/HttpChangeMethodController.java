@@ -7,38 +7,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class HttpChangeMethodController {
 	
-    @GetMapping("/Http/ChangeMethod/Index")
-	public String Index() {
+    @GetMapping("/http/change-method/index")
+	public String index() {
     
-    	return "http/changemethod/Index";
+    	return "http/changemethod/index";
     }
 	
-    @GetMapping("/Http/ChangeMethod/GetToPost")
-	public String GetToPostRequest() {
+    @GetMapping("/http/change-method/get-to-post")
+	public String getToPostRequest() {
     	System.out.println("Request HTTP Get");
     
-    	return "http/changemethod/GetToPost";
+    	return "http/changemethod/gettopost";
     }
     
-    @PostMapping("/Http/ChangeMethod/GetToPost")
-	public String GetToPostResponse() {
+    @PostMapping("/http/change-method/get-to-post")
+	public String getToPostResponse() {
     	System.out.println("Response HTTP Post");
     
-    	return "redirect:/Http/ChangeMethod/Index";
+    	return "redirect:/http/change-method/index";
     }
     
-    @PostMapping("/Http/ChangeMethod/PostToGet")
-	public String PostToGetRequest() {
+    @PostMapping("/http/change-method/post-to-get")
+	public String postToGetRequest() {
     	System.out.println("Request HTTP Post");
     
-    	return "redirect:/Basic/Http/ChangeMethod/PostToGet";
+    	return "redirect:/http/change-method/post-to-get";
     }
     
-    @GetMapping("/Basic/Http/ChangeMethod/PostToGet")
-	public String PostToGetResponse() {
+    @GetMapping("/http/change-method/post-to-get")
+	public String postToGetResponse() {
     	System.out.println("Response HTTP Get");
     
-    	return "redirect:/Http/ChangeMethod/Index";
+    	return "redirect:/http/change-method/index";
     }
 
 }

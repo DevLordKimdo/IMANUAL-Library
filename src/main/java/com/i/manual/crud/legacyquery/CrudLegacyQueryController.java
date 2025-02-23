@@ -16,54 +16,56 @@ public class CrudLegacyQueryController {
     private final CrudLegacyQueryService crudLegacyQuerytService;
     public CrudLegacyQueryController(CrudLegacyQueryService crudLegacyQuerytService) {this.crudLegacyQuerytService = crudLegacyQuerytService;}
 		
-	@GetMapping("/Crud/LegacyQuery/List")
-	public String List(Model model) {
+	@GetMapping("/crud/legacy-query/list")
+	public String list(Model model) {
 		
-        List<CrudBasicDTO> List = crudLegacyQuerytService.list();        
-        model.addAttribute("List", List);
+        List<CrudBasicDTO> list = crudLegacyQuerytService.list();        
+        model.addAttribute("list", list);
 		
-		return "crud/legacyquery/List";
+		return "crud/legacyquery/list";
 	}
 	
-	@GetMapping("/Crud/LegacyQuery/Create")
-	public String Create() {
+	@GetMapping("/crud/legacy-query/create")
+	public String create() {
 		
-		return "crud/legacyquery/Create";
+		return "crud/legacyquery/create";
 	}
 	
-	@PostMapping("/Crud/LegacyQuery/Create")
-	public String Create(CrudBasicDTO crudBasicDTO) {
+	@PostMapping("/crud/legacy-query/create")
+	public String create(CrudBasicDTO crudBasicDTO) {
 		
 		crudLegacyQuerytService.create(crudBasicDTO);
 		
-		return "redirect:/Crud/LegacyQuery/List";
+		return "redirect:/crud/legacy-query/list";
 	}
 	
-	@GetMapping("/Crud/LegacyQuery/Read/{idx}")
-	public String Read(@PathVariable("idx") String idx, Model model) {
+	@GetMapping("/crud/legacy-query/read/{idx}")
+	public String read(@PathVariable("idx") String idx, Model model) {
 		
 		crudLegacyQuerytService.updateHit(idx);
 		CrudBasicDTO crudBasicDTO = crudLegacyQuerytService.read(idx);
-		model.addAttribute("Read", crudBasicDTO);
+		model.addAttribute("read", crudBasicDTO);
 		
-		return "crud/legacyquery/Read";
+		return "crud/legacyquery/read";
 	}
 	
-	@PostMapping("/Crud/LegacyQuery/Update/{idx}")
-	public String Update(@PathVariable("idx") String idx, CrudBasicDTO crudBasicDTO) {
+	@PostMapping("/crud/legacy-query/update/{idx}")
+	public String update(@PathVariable("idx") String idx, CrudBasicDTO crudBasicDTO) {
 						
 		crudBasicDTO.setIdx(idx);
 		crudLegacyQuerytService.update(crudBasicDTO);
 		
-		return "redirect:/Crud/LegacyQuery/Read/" + idx;
+		return "redirect:/crud/legacy-query/read/" + idx;
 	}
 	
-	@GetMapping("/Crud/LegacyQuery/Delete/{idx}")
-	public String Delete(@PathVariable("idx") String idx) {
+	@GetMapping("/crud/legacy-query/delete/{idx}")
+	public String delete(@PathVariable("idx") String idx) {
 		
 		crudLegacyQuerytService.delete(idx);
 		
-		return "redirect:/Crud/LegacyQuery/List";
+		return "redirect:/crud/legacy-query/list";
 	}
 
 }
+
+// mybatis 기능을 쓰지 않고 기존의 JDBC 드라이버를 직접 호출해서 사용하는 방법

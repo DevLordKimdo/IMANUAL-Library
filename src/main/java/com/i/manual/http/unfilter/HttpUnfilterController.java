@@ -20,7 +20,7 @@ public class HttpUnfilterController {
     // 특정 메서드를 지정해서 받고 싶으면 
     // 뒤에 method = RequestMethod.GET(GET방식으로 받기) 추가 혹은
     // @RequestMapping 대신 @GetMapping 이나 @PostMapping 를 넣어줘야 함.
-    @RequestMapping(value = "/http/unfilter/request" )
+    @RequestMapping(value = "/http/unfilter/request")
 	public ResponseEntity<String> request(HttpServletRequest request) {
     	
     	if(request.getMethod().equals("GET")) { System.out.println("GET로 받았습니다."); }

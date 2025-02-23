@@ -7,26 +7,26 @@
 <link rel="stylesheet" href="/css/basic/styles.css">
 <body>
 	<form name="form">
-		<div th:text="|글번호 : ${Read.idx}|"></div>
-		<div th:text="|작성일 : ${Read.datetime}|"></div>
-		<div th:text="|조회수 : ${Read.hit}|"></div>
-		<div>이름 : <input type="text" name="name" th:value="${Read.name}"/></div>
-		<div>제목 : <input type="text" name="title" th:value="${Read.title}"/></div>
-		<div>내용 : <textarea name="content" th:text="${Read.content}"></textarea></div>
+		<div th:text="|글번호 : ${read.idx}|"></div>
+		<div th:text="|작성일 : ${read.datetime}|"></div>
+		<div th:text="|조회수 : ${read.hit}|"></div>
+		<div>이름 : <input type="text" name="name" th:value="${read.name}"/></div>
+		<div>제목 : <input type="text" name="title" th:value="${read.title}"/></div>
+		<div>내용 : <textarea name="content" th:text="${read.content}"></textarea></div>
 	</form>
-		<div><button type="button" th:onclick="@{|fn_updateSubmit(${Read.idx})|}">수정</button></div>
-		<div><a href="/Crud/JSForm/List"><button>목록</button></a></div>
-		<div><button type="button" th:onclick="@{|fn_deleteSubmit(${Read.idx})|}">삭제</button></div>
+		<div><button type="button" th:onclick="@{|fn_updateSubmit(${read.idx})|}">수정</button></div>
+		<div><a href="/crud/js-form/list"><button>목록</button></a></div>
+		<div><button type="button" th:onclick="@{|fn_deleteSubmit(${read.idx})|}">삭제</button></div>
 </body>
 <script type="text/javaScript">
 	function fn_updateSubmit(idx) {
-       	document.form.action = "/Crud/JSForm/Update/" + idx;
+       	document.form.action = "/crud/js-form/update/" + idx;
        	document.form.method = "POST";
        	document.form.submit();
 	}
 	
 	function fn_deleteSubmit(idx) {
-       	document.form.action = "/Crud/JSForm/Delete/" + idx;
+       	document.form.action = "/crud/js-form/delete/" + idx;
        	document.form.submit();
 	}
 </script>

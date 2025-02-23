@@ -14,54 +14,54 @@ public class CrudBasicController {
     private final CrudBasicService crudBasicService;
     public CrudBasicController(CrudBasicService crudBasicService) {this.crudBasicService = crudBasicService;}
     
-	@GetMapping("/Crud/Basic/List")
-	public String List(Model model) {
+	@GetMapping("/crud/basic/list")
+	public String list(Model model) {
 						
-		List<CrudBasicDTO> List = crudBasicService.list();
-    	model.addAttribute("List", List);
+		List<CrudBasicDTO> list = crudBasicService.list();
+    	model.addAttribute("list", list);
 		
-		return "crud/basic/List";
+		return "crud/basic/list";
 	}
 	
-	@GetMapping("/Crud/Basic/Create")
-	public String Create() {
+	@GetMapping("/crud/basic/create")
+	public String create() {
 		
-		return "crud/basic/Create";
+		return "crud/basic/create";
 	}
 	
-	@PostMapping("/Crud/Basic/Create")
-	public String Create(CrudBasicDTO crudBasicDTO) {
+	@PostMapping("/crud/basic/create")
+	public String create(CrudBasicDTO crudBasicDTO) {
 		
 		crudBasicService.create(crudBasicDTO);
 		
-		return "redirect:/Crud/Basic/List";
+		return "redirect:/crud/basic/list";
 	}
 	
-	@GetMapping("/Crud/Basic/Read/{idx}")
-	public String Read(@PathVariable("idx") String idx, Model model) {
+	@GetMapping("/crud/basic/read/{idx}")
+	public String read(@PathVariable("idx") String idx, Model model) {
 		
 		crudBasicService.updateHit(idx);
 		CrudBasicDTO crudBasicDTO = crudBasicService.read(idx);
-		model.addAttribute("Read", crudBasicDTO);
+		model.addAttribute("read", crudBasicDTO);
 		
-		return "crud/basic/Read";
+		return "crud/basic/read";
 	}
 	
-	@PostMapping("/Crud/Basic/Update/{idx}")
-	public String Update(@PathVariable("idx") String idx, CrudBasicDTO crudBasicDTO) {
+	@PostMapping("/crud/basic/update/{idx}")
+	public String update(@PathVariable("idx") String idx, CrudBasicDTO crudBasicDTO) {
 						
 		crudBasicDTO.setIdx(idx);
 		crudBasicService.update(crudBasicDTO);
 		
-		return "redirect:/Crud/Basic/Read/" + idx;
+		return "redirect:/crud/basic/read/" + idx;
 	}
 	
-	@GetMapping("/Crud/Basic/Delete/{idx}")
-	public String Delete(@PathVariable("idx") String idx) {
+	@GetMapping("/crud/basic/delete/{idx}")
+	public String delete(@PathVariable("idx") String idx) {
 		
 		crudBasicService.delete(idx);
 		
-		return "redirect:/Crud/Basic/List";
+		return "redirect:/crud/basic/list";
 	}
 	
 }

@@ -14,7 +14,7 @@
 				     searchDateStart : document.getElementById('searchDateStart').value,
 				     searchDateEnded : document.getElementById('searchDateEnded').value }
 		
-        fetch('/Fetch/Search/submitJson', {
+        fetch('/fetch/search/submit-json', {
             method  : 'POST',
             headers : { 'Content-Type' : 'application/json' },
             body    : JSON.stringify(data)
@@ -27,7 +27,7 @@
         })
         .then(data => {
             let html = ``;
-            let ResultList = document.getElementById('ResultList');
+            let resultList = document.getElementById('resultList');
             
             data.forEach((list, idx) => {
                 html += `<tr>`;
@@ -39,7 +39,7 @@
                 html += `</tr>`;
             });
             
-            ResultList.innerHTML = html;
+            resultList.innerHTML = html;
             
         })
         .catch(error => { console.error('요청 실패 : ', error); });
@@ -57,7 +57,7 @@
 		// 생성한 FormData를 객체로 변환해주기.
 		const data = Object.fromEntries(formData);
 		
-        fetch('/Fetch/Search/submitJson', {
+        fetch('/fetch/search/submit-json', {
             method  : 'POST',
             headers : { 'Content-Type' : 'application/json' },
             body    : JSON.stringify(data)
@@ -70,7 +70,7 @@
         })
         .then(data => {
             let html = ``;
-            let ResultList = document.getElementById('ResultList');
+            let resultList = document.getElementById('resultList');
             
             data.forEach((list, idx) => {
                 html += `<tr>`;
@@ -82,7 +82,7 @@
                 html += `</tr>`;
             });
             
-            ResultList.innerHTML = html;
+            resultList.innerHTML = html;
             
         })
         .catch(error => { console.error('요청 실패 : ', error); });
@@ -100,7 +100,7 @@
 		// application/x-www-form-urlencoded 형식에 맞게 인코딩하는 작업.
 		let data = new URLSearchParams(formData).toString();
 		
-        fetch('/Fetch/Search/submitForm', {
+        fetch('/fetch/search/submit-form', {
             method  : 'POST',
             headers : { 'Content-Type': 'application/x-www-form-urlencoded' },
             body    : data
@@ -113,7 +113,7 @@
         })
         .then(data => {
             let html = ``;
-            let ResultList = document.getElementById('ResultList');
+            let resultList = document.getElementById('resultList');
             
             data.forEach((list, idx) => {
                 html += `<tr>`;
@@ -125,7 +125,7 @@
                 html += `</tr>`;
             });
             
-            ResultList.innerHTML = html;
+            resultList.innerHTML = html;
             
         })
         .catch(error => { console.error('요청 실패 : ', error); });
@@ -136,7 +136,7 @@
 		
 		let searchForm = document.getElementById('searchForm');
 		
-        fetch('/Fetch/Search/submitForm', {
+        fetch('/fetch/search/submit-form', {
             method  : 'POST',
             // FormData를 직접 사용하거든 아예 Content-Type 헤더를 설정을 안하는 됨.
             // fetch API가 자동으로 적절한 헤더 값을 부여해줌.
@@ -150,7 +150,7 @@
         })
         .then(data => {
             let html = ``;
-            let ResultList = document.getElementById('ResultList');
+            let resultList = document.getElementById('resultList');
             
             data.forEach((list, idx) => {
                 html += `<tr>`;
@@ -162,7 +162,7 @@
                 html += `</tr>`;
             });
             
-            ResultList.innerHTML = html;
+            resultList.innerHTML = html;
             
         })
         .catch(error => { console.error('요청 실패 : ', error); });
@@ -206,7 +206,7 @@
 			        <th>조회</th>
 			    </tr>
 		    </thead>
-		    <tbody id="ResultList">
+		    <tbody id="resultList">
 			    <tr th:each="list: ${list}">
 			        <td th:text="${list.idx}"></td>
 			        <td th:text="${list.title}"></td>
