@@ -11,11 +11,5 @@ public class PopupModalController {
 
 		return "popup/modal/index";
 	}
-	
-	@GetMapping("/popup/modal/advanced")
-	public String advanced() {
-
-		return "popup/modal/advanced";
-	}
 
 }
