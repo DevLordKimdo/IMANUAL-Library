@@ -21,7 +21,7 @@ public class CrudRestAPIController {
     private final CrudBasicService crudBasicService;
     public CrudRestAPIController(CrudBasicService crudBasicService) {this.crudBasicService = crudBasicService;}
     
-	@GetMapping("/Crud/RestAPI/List")
+	@GetMapping("/crud/rest-api/list")
 	public ResponseEntity<List<CrudBasicDTO>> List() {
 
         List<CrudBasicDTO> list = crudBasicService.list();
@@ -29,7 +29,7 @@ public class CrudRestAPIController {
         return ResponseEntity.ok(list);
     }
 		
-	@PostMapping("/Crud/RestAPI/Create")
+	@PostMapping("/crud/rest-api/create")
 	public ResponseEntity<String> Create(@RequestBody CrudBasicDTO crudBasicDTO) {
 		
 		crudBasicService.create(crudBasicDTO);
@@ -37,7 +37,7 @@ public class CrudRestAPIController {
 		return ResponseEntity.ok("Success");
 	}
 	
-	@PostMapping("/Crud/RestAPI/Update/{idx}")
+	@PostMapping("/crud/rest-api/update/{idx}")
 	public ResponseEntity<String> Update(@PathVariable("idx") String idx, @RequestBody CrudBasicDTO crudBasicDTO) {
 
 		crudBasicDTO.setIdx(idx);
@@ -46,7 +46,7 @@ public class CrudRestAPIController {
 		return ResponseEntity.ok("Success");
 	}
 	
-	@GetMapping("/Crud/RestAPI/Delete/{idx}")
+	@GetMapping("/crud/rest-api/delete/{idx}")
 	public ResponseEntity<String> Delete(@PathVariable("idx") String idx) {
 		
 		crudBasicService.delete(idx);
@@ -54,7 +54,7 @@ public class CrudRestAPIController {
 		return ResponseEntity.ok("Success");
 	}
 	
-	@GetMapping("/Crud/RestAPI/Read/{idx}")
+	@GetMapping("/crud/rest-api/read/{idx}")
 	public ResponseEntity<CrudBasicDTO> Read(@PathVariable("idx") String idx, Model model) {
 		
 		crudBasicService.updateHit(idx);
