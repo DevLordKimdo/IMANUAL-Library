@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>FileIO Directory Index</title>
+</head>
+<link rel="stylesheet" href="/css/basic/styles.css">
+<body>
+	<h2>Directory List</h2>
+	<table>
+		<thead>
+		    <tr>
+		        <th>폴더 내부 파일 리스트</th>
+		    </tr>
+	    </thead>
+	    <tbody th:if="${#arrays.isEmpty(fileList) && fileList != null}">
+			<tr>
+				<td>파일이 없습니다.</td>
+			</tr>
+	    </tbody>
+	    <tbody th:else th:if="${fileList == null}">
+			<tr>
+				<td>폴더 경로가 잘못 지정되었습니다. 지정된 경로를 확인하세요.</td>
+			</tr>
+	    </tbody>
+	    <tbody th:else>
+		    <tr th:each="list: ${fileList}">
+				<td th:text="${list}"></td>
+		    </tr>
+	    </tbody>
+	</table>
+</body>
+</html>
