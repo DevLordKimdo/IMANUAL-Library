@@ -1,5 +1,5 @@
 # I MANUAL LIBRARY
-> made by Dong Kim Ko
+> made by Dong Kim Ko (DevLord Kimdo)
 <br>
 
 # 안녕하세요!
@@ -26,3 +26,8 @@
 > JAVA JDK 1.7<br>
 > Gradle<br>
 > Spring Tool Suite 4.22.0<br>
+<br>
+
+# 레거시코드
+현재 해당 소스는 더이상 사용하지 않는 레거시 코드입니다.
+문의사항이 있을 경우 메일로 문의 바랍니다.
